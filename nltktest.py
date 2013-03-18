@@ -13,10 +13,10 @@ N	noun
 NP	proper noun	
 NUM	number	        
 PRO	pronoun	        
-P	preposition	
+P / PRP	preposition	
 TO	the word to	
 UH	interjection	
-V	verb	        
+V / VB	verb	        
 VD	past tense	
 VG	present participle	
 VN	past participle	
@@ -31,10 +31,18 @@ tokens = nltk.word_tokenize(sentence)
 
 tagged = nltk.pos_tag(tokens)
 
-print tagged
+#print tagged
 
 verbs = [x for x in tagged if x[1] == 'VB']
 #print verbs
 
 PRP = [x for x in tagged if x[1] == 'PRP']
-print PRP
+#print PRP
+
+mult = "i have a permit to park here.  you permit me to park here."
+
+sent = "Bucky sits on the throne with his jester hat."
+
+tokens2 = nltk.word_tokenize(sent)
+text = nltk.Text(tokens2)
+print text.generate()
