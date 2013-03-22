@@ -82,6 +82,7 @@ h2, h3 {
 {% if user %}
 <form action="" method="POST">
 <h1><center>Welcome back {{user}}</center></h1>
+{% endif %}
 <br>
 
 </section>
@@ -95,7 +96,7 @@ h2, h3 {
 <h2>Your Poems!</h2>
 {% for poem in poems %}
 {{poem.text}}
-{%endfor %}
+{% endfor %}
 </form>
 </body>
 </html>
