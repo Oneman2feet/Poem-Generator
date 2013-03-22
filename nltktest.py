@@ -43,6 +43,6 @@ mult = "i have a permit to park here.  you permit me to park here."
 
 sent = "Bucky sits on the throne with his jester hat."
 
-tokens2 = nltk.word_tokenize(sent)
-text = nltk.Text(tokens2)
-print text.generate()
+text = nltk.Text(tokens)
+made = text.generate()
+print made
