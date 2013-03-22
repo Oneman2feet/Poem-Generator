@@ -1,9 +1,9 @@
 Poem-Generator
 ==============
-*Batya Zamansky
-*Zachary Zimmerman
-*Amanda Boss
-*Tiffany Phan
+	* Batya Zamansky
+	* Zachary Zimmerman
+	* Amanda Boss
+	* Tiffany Phan
 
 
 
