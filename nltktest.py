@@ -18,7 +18,7 @@ PRO	        pronoun
 P / PRP / IN	preposition	
 TO       	the word to	
 UH      	interjection	
-V / VB  	verb	        
+V / VB / VBP 	verb	        
 VD      	past tense	
 VG      	present participle	
 VN      	past participle	
