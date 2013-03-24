@@ -1,4 +1,4 @@
-import nltk, re, nltk.data,curses
+import nltk, re, nltk.data,curses, random
 from curses.ascii import isdigit
 from nltk.corpus import cmudict
 
@@ -75,4 +75,10 @@ def makeSyllablesDict():
 makeSyllablesDict()
 fours = sylls[4]
 parts = nltk.pos_tag(fours)
-print parts
+#print parts
+
+
+x = random.randint(5,50)
+print fours[x]
+text = nltk.Text(word.lower() for word in nltk.corpus.brown.words())
+print text.similar(fours[x])
