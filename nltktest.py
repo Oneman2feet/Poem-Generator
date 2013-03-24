@@ -3,25 +3,26 @@ from curses.ascii import isdigit
 from nltk.corpus import cmudict
 
 """
-ADJ	adjective	
-ADV	adverb	        
-CNJ	conjunction	
-DET	determiner	
-EX	existential	
-FW	foreign word	
-MOD	modal verb	
-N	noun	        
-NP	proper noun	
-NUM	number	        
-PRO	pronoun	        
-P / PRP	preposition	
-TO	the word to	
-UH	interjection	
-V / VB	verb	        
-VD	past tense	
-VG	present participle	
-VN	past participle	
-WH	wh determiner	
+ADJ / JJ        adjective	
+ADV / RB	adverb	     
+CC              coordinating conjunction   
+CNJ	        conjunction	
+DET	        determiner	
+EX	        existential	
+FW	        foreign word	
+MOD	        modal verb	
+N / NN	        noun	        
+NP	        proper noun	
+NUM	        number	        
+PRO	        pronoun	        
+P / PRP / IN	preposition	
+TO       	the word to	
+UH      	interjection	
+V / VB  	verb	        
+VD      	past tense	
+VG      	present participle	
+VN      	past participle	
+WH      	wh determiner	
 """
 
 
