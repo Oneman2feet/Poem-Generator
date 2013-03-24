@@ -41,32 +41,34 @@ PRP = [x for x in tagged if x[1] == 'PRP']
 #print PRP
 
 
+words = open("words.text").readlines()
+words = [x.strip() for x in words]
+#print words
 d = cmudict.dict()
+sylls = {0:[]}
+
 def nysl(word):
     try:
         return [len(list(y for y in x if isdigit(y[-1]))) for x in d[word.lower()]]
     except:
         return "word is not in cmudict"
 
+
 regexp = "[A-Za-z]+"
+apos = ".*'.*"
 exp = re.compile(regexp)
-print tokens
+exp2 = re.compile(apos)
 
-numSyl = {0:[]}
-print numSyl
+def makeSyllablesDict():
+    for a in words:
+        a = a.lower()
+        if exp.match(a) and not exp2.match(a):
+            if nysl(a)[0] not in sylls:
+                sylls[nysl(a)[0]] = [a]
+            else:
+                sylls[nysl(a)[0]].append(a)
+            #print a +" " + str(nysl(a)[0])  
+    return sylls['w']
 
-for a in tokens:
-    a = a.lower()
-    if a[-1] == ".":
-        a = a[:-1]
-    if exp.match(a):
-        if nysl(a)[0] not in numSyl:
-            numSyl[nysl(a)[0]] = [a]
-        else:
-            numSyl[nysl(a)[0]].append(a)
-        print a +" " + str(nysl(a)[0])
-    else:
-        print a
-print numSyl
 
-    
+print makeSyllablesDict()
