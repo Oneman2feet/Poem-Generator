@@ -68,7 +68,10 @@ def makeSyllablesDict():
             else:
                 sylls[nysl(a)[0]].append(a)
             #print a +" " + str(nysl(a)[0])  
-    return sylls['w']
+    return sylls
 
 
-print makeSyllablesDict()
+makeSyllablesDict()
+fours = sylls[4]
+parts = nltk.pos_tag(fours)
+print parts
