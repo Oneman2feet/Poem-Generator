@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html>
+
+<html xmins = "http://www.w3.org/1999/xhtml">
+<link href="http://fonts.googleapis.com/css?family=Goudy+Bookletter+1911" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Raleway:100" rel="stylesheet" type="text/css">
+
+
+<head>
+	<meta http-equiv= "Content-Type" content= "text/html; charset=UFT-8" />
+
+	<title>Make Poem | Poem Generator</title>
+<style>
+p.sansserif{font-family:Arial, Helvetica, sans-serif}
+p.serif{ font-family: "Times New Roman", Times, serif;}
+body
+{
+background-color:#CC9999;
+}
+h1 {
+    font-family: 'Raleway', Helvetica, Arial, sans-serif;
+    font-size: 50px;
+    line-height: 70px;
+}
+ 
+p {
+    font-family: 'Goudy Bookletter 1911', Georgia, Times, serif;
+    font-size: 15px;
+    line-height: 25px;
+}
+h2 {
+    font-family: 'Raleway', Helvetica, Arial, sans-serif;
+    font-size: 50px;
+    line-height: 70px;
+} 
+#button2
+{
+	width: 150px;
+	height: 40px;
+	background: url(images/button2.png) repeat-x;
+	border: 1px solid #AAA;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	cursor: pointer;
+	color: #666;
+	font-family: Arial, Helvetica;
+	font-size: 20px;
+	box-shadow: inset 0 1px #EEE;
+	-moz-box-shadow: inset 0 1px #EEE;
+	-webkit-box-shadow: inset 0 1px #EEE;
+	text-shadow: 1px 1px #CCC;
+	padding: 0;
+	margin: 0;
+	line-height: 40px;
+	text-align: centre;
+}
+#button2:hover
+{
+	box-shadow: 0 0 10px 0 #666, inset 0 1px #EEE;
+	-moz-box-shadow: 0 0 10px 0 #666, inset 0 1px #EEE;
+	-webkit-box-shadow: 0 0 10px 0 #666, inset 0 1px #EEE;
+	color: #444;
+}
+#button2:active
+{
+	box-shadow: inset 0 0 8px #333;
+	-moz-box-shadow: inset 0 0 8px #333;
+	-webkit-box-shadow: inset 0 0 8px #333;
+	background: url(images/button2_active.png) repeat-x;
+	color: #EEE;
+	text-shadow: 1px 1px #444;
+	border: 1px solid #444;
+	border-bottom: 1px solid #EEE;
+	padding-left: 3px;
+}    
+</style>
+</head>
+
+<body id = "home">
+<h1><center>Create your own Poem!</center></h1>
+<br>
+
+
+<div id="button_container" style="margin-left: 1300px;">
+			<button type="button" id="button2" onclick="window.location.href='profile.html'">Profile</button>
+		</div>
+		<div id="button_container" style="margin-left: 1300px;">
+			<button type="button" id="button2" onclick="window.location.href='home.html'">Home</button>
+		</div>
+<br>
+<br>  
+<h2>Options</h2>
+<form action = "" form method = "POST">
+<b> Theme: </b>
+<select name = "theme" id = "theme">
+<option value = "nature"> Nature </option>
+<option value = "love"> Love </option>
+<option value = "school"> School </option>
+<option value = "Bichon Frises"> Bichon Frises </option>
+<option value = "feelings"> Feelings </option>
+</select>
+<b> Form: </b>
+<select name = "type" id = "type">
+<option value = "haiku"> Haiku </option>
+<option value = "sonnet"> Sonnet </option>
+<option value = "free verse"> Free Verse </option>
+</select>
+<b> # of Lines </b>
+<input type= "text" name="lines" id="lines">
+<input type ="submit" value = "Generate Poem">	
+</form>
+</body>
+</html>
+
+	

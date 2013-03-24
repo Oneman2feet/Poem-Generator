@@ -14,10 +14,10 @@ N	noun
 NP	proper noun	
 NUM	number	        
 PRO	pronoun	        
-P	preposition	
+P / PRP	preposition	
 TO	the word to	
 UH	interjection	
-V	verb	        
+V / VB	verb	        
 VD	past tense	
 VG	present participle	
 VN	past participle	
