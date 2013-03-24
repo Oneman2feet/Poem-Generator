@@ -48,6 +48,7 @@ words = [x.strip() for x in words]
 d = cmudict.dict()
 sylls = {0:[]}
 
+
 def nysl(word):
     try:
         return [len(list(y for y in x if isdigit(y[-1]))) for x in d[word.lower()]]
@@ -78,7 +79,27 @@ parts = nltk.pos_tag(fours)
 #print parts
 
 
-x = random.randint(5,50)
-print fours[x]
-text = nltk.Text(word.lower() for word in nltk.corpus.brown.words())
-print text.similar(fours[x])
+#x = random.randint(5,50)
+#print fours[x]
+#text = nltk.Text(word.lower() for word in nltk.corpus.brown.words())
+#print text.similar(fours[x])
+
+#make a line of 10 syllables
+def makeLine(x = 10):
+    line = ""
+    while x > 0:
+        if x > 8:
+            num = random.randint(1,8)
+        else:
+            num = random.randint(1,x)
+        #print num
+        y = random.randint(0,len(sylls[num]))
+        line+= " "
+        line+= sylls[num][y]
+        x = x - num
+    return line
+
+
+print makeLine(5)
+print makeLine(7)
+print makeLine(5)
