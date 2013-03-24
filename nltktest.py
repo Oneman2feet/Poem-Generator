@@ -52,11 +52,21 @@ regexp = "[A-Za-z]+"
 exp = re.compile(regexp)
 print tokens
 
+numSyl = {0:[]}
+print numSyl
+
 for a in tokens:
     a = a.lower()
     if a[-1] == ".":
         a = a[:-1]
     if exp.match(a):
+        if nysl(a)[0] not in numSyl:
+            numSyl[nysl(a)[0]] = [a]
+        else:
+            numSyl[nysl(a)[0]].append(a)
         print a +" " + str(nysl(a)[0])
     else:
         print a
+print numSyl
+
+    
