@@ -136,7 +136,7 @@ def getRhymes(word):
     url = "http://rhymebrain.com/talk?function=getRhymes&word=%s"%(word)
     result = json.loads(urllib2.urlopen(url).read())
     words = [[x['syllables'], x['word']] for x in result]
-    #words =  words[:40]
+    words =  words[:len(words)/2]
     return words
 
 def getRhyme(num, words):
@@ -162,8 +162,13 @@ def makeRhymingLine(x, word):
             r = getRhyme(num,words)
             if r != "":
                 line+= r
+            elif x > 1:
+                line+= choice(sylls['1'])
+                line+= " "
+                num = 1
             else:
-                line+= "CRY"
+                makeRhymingLine(orig,w)
+                break
         #not last word
         else:
             line+= choice(sylls[str(num)])
@@ -180,5 +185,5 @@ def makeFakeSonnet(word):
     
 
 
-print makeFakeSonnet('flutter')
+print makeFakeSonnet('good')
 
