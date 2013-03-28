@@ -46,6 +46,7 @@ words = open("words.text").readlines()
 words = [x.strip() for x in words]
 #print words
 d = cmudict.dict()
+#print d
 sylls = {0:[]}
 
 
@@ -74,9 +75,10 @@ def makeSyllablesDict():
 
 
 makeSyllablesDict()
+print sylls.keys()
 fours = sylls[4]
 parts = nltk.pos_tag(fours)
-#print parts
+print fours
 
 
 #x = random.randint(5,50)
