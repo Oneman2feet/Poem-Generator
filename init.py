@@ -1,6 +1,8 @@
-import nltk, re, nltk.data, curses, random, shelve
+import nltk, re, nltk.data, curses, random, shelve, urllib2, json
 from curses.ascii import isdigit
 from nltk.corpus import cmudict
+from random import choice
+
 
 words = open("words.text").readlines()
 words = [x.strip().lower() for x in words]
@@ -132,6 +134,51 @@ sylls = getDict()
 
 def getRhymes(word):
     url = "http://rhymebrain.com/talk?function=getRhymes&word=%s"%(word)
-    print url
+    result = json.loads(urllib2.urlopen(url).read())
+    words = [[x['syllables'], x['word']] for x in result]
+    #words =  words[:40]
+    return words
 
-getRhymes("number")
+def getRhyme(num, words):
+    x = [word for word in words if word[0] == str(num)]
+    if len(x) == 0:
+        return ""
+    else:
+        return choice(x)[1]
+
+#x is num of syllables for the line, word is word to rhyme on
+def makeRhymingLine(x, word):
+    orig = x
+    w = word
+    words = getRhymes(word)
+    line = ""
+    choose = [1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,3,3,3,3,3,3,3,3,3,3,3,4,4,4,4,5,5,6,6,7,7,8]
+    while x > 0:
+        #get num of syllables
+        num = choice([s for s in choose if s <= x])
+        
+        #last word
+        if x == num:
+            r = getRhyme(num,words)
+            if r != "":
+                line+= r
+            else:
+                line+= "CRY"
+        #not last word
+        else:
+            line+= choice(sylls[str(num)])
+            line+= " "
+        x = x - num
+    return line
+
+def makeFakeSonnet(word):
+    line = ""
+    #print getRhymes(word)
+    for i in range(0,10):
+        line += makeRhymingLine(10,word) + '\n'
+    return line
+    
+
+
+print makeFakeSonnet('flutter')
+
