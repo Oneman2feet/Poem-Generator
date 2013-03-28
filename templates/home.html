@@ -104,7 +104,8 @@ h2 {
 <h2>New Poems!</h2>
 
 {% for poem in poems %}
-<a href="/poem/{{poem.poetryid}}">{{poem.title}}</a> <br />
+<!-- <a href="/poem/{{poem.poetryid}}">{{poem.title}}</a> <br /> -->
+<p>{{poem|safe}}<p>
 {%endfor %}
 <br>
 EXAMPLE: <br>

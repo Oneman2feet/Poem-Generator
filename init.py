@@ -66,8 +66,8 @@ def makeLine(x = 10):
 
 def makeHaiku():
     s = ""
-    s = s + makeLine(5) + '\n'
-    s = s + makeLine(7) + '\n'
+    s = s + makeLine(5) + '<br/>'
+    s = s + makeLine(7) + '<br/>'
     s = s + makeLine(5)
     return s
 

@@ -1,11 +1,13 @@
 from flask import Flask, render_template, request
+import init
 
 app = Flask(__name__)
 app.secret_key = "blah"
 
 @app.route("/", methods = ["GET"])
 def home():
-    return render_template("home.html")
+    poems = [str(init.makeHaiku()) for x in range(0,10)]
+    return render_template("home.html",poems=poems)
 
 @app.route("/profile", methods = ["GET"])
 def profile():
