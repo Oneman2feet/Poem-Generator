@@ -21,6 +21,7 @@ regexp = "[A-Za-z]+"
 apos = ".*'.*"
 exp = re.compile(regexp)
 exp2 = re.compile(apos)
+choose = [1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,3,3,3,3,3,3,3,3,3,3,3,4,4,4,4,5,5,6,6,7,7,8]
 
 
 def nysl(word):
@@ -57,13 +58,8 @@ def makeLine(x = 10):
     line = ""
     while x > 0:
         #get num of syllables
-        if x > 8:
-            num = random.randint(1,8)
-        else:
-            num = random.randint(1,x)
-        #get random index
-        y = random.randint(0,len(sylls[str(num)]))
-        line+= sylls[str(num)][y]
+        num = choice([s for s in choose if s <= x])
+        line+= choice(sylls[str(num)])
         line+= " "
         x = x - num
     return line
@@ -127,7 +123,7 @@ sylls = getDict()
 #adverbs =getAdverbs()
 #prepositions = getPrepositions()
 
-#print makeHaiku()
+print makeHaiku()
 
 
 ##################################
@@ -152,7 +148,6 @@ def makeRhymingLine(x, word):
     w = word
     words = getRhymes(word)
     line = ""
-    choose = [1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,3,3,3,3,3,3,3,3,3,3,3,4,4,4,4,5,5,6,6,7,7,8]
     while x > 0:
         #get num of syllables
         num = choice([s for s in choose if s <= x])
@@ -185,5 +180,5 @@ def makeFakeSonnet(word):
     
 
 
-print makeFakeSonnet('good')
+#print makeFakeSonnet('good')
 
