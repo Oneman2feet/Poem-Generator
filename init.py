@@ -13,6 +13,7 @@ nouns = {}
 verbs = {}
 adjectives = {}
 adverbs = {}
+prepositions = {}
 
 regexp = "[A-Za-z]+"
 apos = ".*'.*"
@@ -72,9 +73,9 @@ def makeHaiku():
     s = s + makeLine(5)
     return s
 
-def makeAdverbs():
+def makePreps():
     syl = shelve.open("syl")
-    adverbs = shelve.open("adverbs")
+    preps = shelve.open("prepositions")
     x = {}
     for item in syl:
         l = nltk.pos_tag(syl[item])
@@ -82,13 +83,13 @@ def makeAdverbs():
     #print x
     
     for item in x:
-        adverbs[item] = []
+        preps[item] = []
         for word in x[item]:
             print word
-            if word[1] == "ADV" or word[1] == "RB":
-                l = adverbs[item]
+            if word[1] == "P" or word[1] == "PRP" or word[1] == "IN":
+                l = preps[item]
                 l.append(word)
-                adverbs[item] = l
+                preps[item] = l
     return adverbs
         
 def getNouns():
@@ -107,7 +108,13 @@ def getAdverbs():
     adverbs = shelve.open("adverbs")
     return adverbs
 
+def getPrepositions():
+    preps = shelve.open("prepositions")
+    return preps
+
 sylls = getDict()
+
+###################################
 
 #fours = sylls['4']
 #parts = nltk.pos_tag(fours)
@@ -116,5 +123,15 @@ sylls = getDict()
 #verbs = getVerbs()
 #adjectives = getAdjectives()
 #adverbs =getAdverbs()
+#prepositions = getPrepositions()
 
 #print makeHaiku()
+
+
+##################################
+
+def getRhymes(word):
+    url = "http://rhymebrain.com/talk?function=getRhymes&word=%s"%(word)
+    print url
+
+getRhymes("number")
