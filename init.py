@@ -9,6 +9,11 @@ words.sort()
 d = cmudict.dict()
 sylls = {'0':[]}
 
+nouns = {}
+verbs = {}
+adjectives = {}
+adverbs = {}
+
 regexp = "[A-Za-z]+"
 apos = ".*'.*"
 exp = re.compile(regexp)
@@ -67,11 +72,49 @@ def makeHaiku():
     s = s + makeLine(5)
     return s
 
+def makeAdverbs():
+    syl = shelve.open("syl")
+    adverbs = shelve.open("adverbs")
+    x = {}
+    for item in syl:
+        l = nltk.pos_tag(syl[item])
+        x[item] = l
+    #print x
+    
+    for item in x:
+        adverbs[item] = []
+        for word in x[item]:
+            print word
+            if word[1] == "ADV" or word[1] == "RB":
+                l = adverbs[item]
+                l.append(word)
+                adverbs[item] = l
+    return adverbs
+        
+def getNouns():
+    nouns = shelve.open("nouns")
+    return nouns
 
+def getVerbs():
+    verbs = shelve.open("verbs")
+    return verbs
+
+def getAdjectives():
+    adjectives = shelve.open("adjectives")
+    return adjectives
+
+def getAdverbs():
+    adverbs = shelve.open("adverbs")
+    return adverbs
 
 sylls = getDict()
 
 #fours = sylls['4']
 #parts = nltk.pos_tag(fours)
 
-print makeHaiku()
+#nouns = getNouns()
+#verbs = getVerbs()
+#adjectives = getAdjectives()
+#adverbs =getAdverbs()
+
+#print makeHaiku()
