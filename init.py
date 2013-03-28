@@ -53,21 +53,25 @@ def makeLine(x = 10):
             num = random.randint(1,8)
         else:
             num = random.randint(1,x)
-        #print num
         #get random index
         y = random.randint(0,len(sylls[str(num)]))
-        #print y
-        line+= " "
         line+= sylls[str(num)][y]
+        line+= " "
         x = x - num
     return line
+
+def makeHaiku():
+    s = ""
+    s = s + makeLine(5) + '\n'
+    s = s + makeLine(7) + '\n'
+    s = s + makeLine(5)
+    return s
+
 
 
 sylls = getDict()
 
-fours = sylls['4']
-parts = nltk.pos_tag(fours)
+#fours = sylls['4']
+#parts = nltk.pos_tag(fours)
 
-print makeLine(5)
-print makeLine(7)
-print makeLine(5)
+print makeHaiku()
