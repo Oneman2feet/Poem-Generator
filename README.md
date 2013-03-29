@@ -33,7 +33,7 @@ What we will have done by the Friday after that:
 <li> We can generate random haikus </li>
 <li> Actually we can generate lines of poems of any length it's just that if a haiku doesn't have gramatical stuff fixing it it's still good </li>
 <li> We also can mostly generate rhyming words, Batya is working more on that </li>
-<ul>
+</ul>
 
 <i> So not so bad so far, right? </i>
 
