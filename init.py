@@ -21,8 +21,23 @@ regexp = "[A-Za-z]+"
 apos = ".*'.*"
 exp = re.compile(regexp)
 exp2 = re.compile(apos)
-choose = [1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,3,3,3,3,3,3,3,3,3,3,3,4,4,4,4,5,5,6,6,7,7,8]
 
+####Making it more even probability wise
+choose = []
+for x in range(0,22):
+    choose.append(1)
+for x in range(0,63):
+    choose.append(2)
+for x in range(0,42):
+    choose.append(3)
+for x in range(0,18):
+    choose.append(4)
+for x in range(0,5):
+    choose.append(5)
+choose.append(6)
+choose.append(7)
+choose.append(8)
+######
 
 def nysl(word):
     try:
@@ -182,4 +197,3 @@ def makeFakeSonnet(word):
 
 
 print makeFakeSonnet('good')
-
