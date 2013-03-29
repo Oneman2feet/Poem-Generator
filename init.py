@@ -123,7 +123,7 @@ sylls = getDict()
 #adverbs =getAdverbs()
 #prepositions = getPrepositions()
 
-print makeHaiku()
+#print makeHaiku()
 
 
 ##################################
@@ -162,8 +162,9 @@ def makeRhymingLine(x, word):
                 line+= " "
                 num = 1
             else:
-                makeRhymingLine(orig,w)
-                break
+                line = ""
+                x = orig
+                num = 0                
         #not last word
         else:
             line+= choice(sylls[str(num)])
@@ -180,5 +181,5 @@ def makeFakeSonnet(word):
     
 
 
-#print makeFakeSonnet('good')
+print makeFakeSonnet('good')
 
