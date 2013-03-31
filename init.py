@@ -210,18 +210,7 @@ def makeRhymingLine(x, word):
         x = x - num
     return line
 
-def makeFakeSonnet(word1, word2):
-    line = ""
-    #print getRhymes(word)
-    for i in range(0,10):
-        if i%2 == 0:
-            line += makeRhymingLine(10,word1) + '\n'
-        else:
-            line += makeRhymingLine(10,word2) + '\n'
-    return line
     
-
-
 def makeLineSense(x):
     line = ""
     n = 0
@@ -308,9 +297,15 @@ def makeLineRhymeSense(x,word):
         x = x - num
     return line
 
+def makeBetterSonnet(word1, word2):
+    line = ""
+    #print getRhymes(word)
+    for i in range(0,10):
+        if i%2 == 0:
+            line += makeLineRhymeSense(10,word1) + '\n'
+        else:
+            line += makeLineRhymeSense(10,word2) + '\n'
+    return line
 
 
-print makeLineRhymeSense(10,"good")
-print makeLineRhymeSense(10,"see")
-print makeLineRhymeSense(10,"good")
-print makeLineRhymeSense(10,"see")
+print makeBetterSonnet("arsenic","purple")
