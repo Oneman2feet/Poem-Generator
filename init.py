@@ -125,6 +125,28 @@ def getPrepositions():
     preps = shelve.open("prepositions")
     return preps
 
+##########
+
+def getNoun(x):
+    nouns = shelve.open("nouns")
+    n = nouns[str(x)]
+    return choice(n)
+
+def getVerb(x):
+    verbs = shelve.open("verbs")
+    v = verbs[str(x)]
+    return choice(v)[0]
+
+def getAdverb(x):
+    adverbs = shelve.open("adverbs")
+    a = adverbs[str(x)]
+    return choice(a)[0]
+
+def getAdjective(x):
+    adjectives = shelve.open("adjectives")
+    a = adjectives[str(x)]
+    return choice(a)[0]
+
 sylls = getDict()
 
 ###################################
@@ -200,4 +222,35 @@ def makeFakeSonnet(word1, word2):
     
 
 
-print makeFakeSonnet('good', 'flutter')
+def makeLineSense(x):
+    line = ""
+    n = 0
+    while x > 0:
+        print x
+        #get num of syllables
+        num = choice([s for s in choose if s <= x])
+        if n > 2:
+            if x > 1:
+                line+= "and"
+            else:
+                line = "the " + line
+        elif n == 2:
+            line+= getVerb(num)
+            num+= 1
+        elif n == 1:
+            line+= getAdjective(num)
+            num+= 1
+        elif n == 0:
+            r = getNoun(num)
+            if r[1] == "NNS":
+                line = "The " + r[0]
+            else:
+                line+= r[0]
+            n+= 1
+
+        line+= " "
+        x = x - num
+    return line
+
+
+print makeLineSense(10)
