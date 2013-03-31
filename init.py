@@ -229,21 +229,26 @@ def makeLineSense(x):
         print x
         #get num of syllables
         num = choice([s for s in choose if s <= x])
+
         if n > 2:
-            if x > 1:
-                line+= "and"
+            if x == 1:
+                n = 0
+                num = 0
             else:
-                line = "the " + line
+                line+= "and"
+                num = 1
+                n = 0
         elif n == 2:
             line+= getVerb(num)
-            num+= 1
+            n+= 1
         elif n == 1:
             line+= getAdjective(num)
-            num+= 1
+            n+= 1
         elif n == 0:
             r = getNoun(num)
-            if r[1] == "NNS":
-                line = "The " + r[0]
+            if r[1] == "NNS" and x > 1:
+                line += "the " + r[0]
+                num = num + 1
             else:
                 line+= r[0]
             n+= 1
