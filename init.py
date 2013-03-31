@@ -169,7 +169,8 @@ def getRhymes(word):
     url = "http://rhymebrain.com/talk?function=getRhymes&word=%s"%(word)
     result = json.loads(urllib2.urlopen(url).read())
     words = [[x['syllables'], x['word']] for x in result]
-    words =  words[:len(words)/3]
+    if len(words) > 15:
+        words =  words[:len(words)/3]
     words.append(word)
     return words
 
