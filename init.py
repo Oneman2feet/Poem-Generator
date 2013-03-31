@@ -226,10 +226,8 @@ def makeLineSense(x):
     line = ""
     n = 0
     while x > 0:
-        print x
         #get num of syllables
         num = choice([s for s in choose if s <= x])
-
         if n > 2:
             if x == 1:
                 n = 0
@@ -252,10 +250,67 @@ def makeLineSense(x):
             else:
                 line+= r[0]
             n+= 1
+        line+= " "
+        x = x - num
+    return line
 
+def makeLineRhymeSense(x,word):
+    line = ""
+    orig = x
+    w = word
+    words = getRhymes(word)
+    n = 0
+    while x > 0:
+        #get num of syllables
+        num = choice([s for s in choose if s <= x])
+        #last word
+        if x == num:
+            r = getRhyme(num,words)
+            if r != "":
+                line+= r
+            elif x > 1:
+                line+= choice(sylls['1'])
+                line+= " "
+                num = 1
+            else:
+                line = ""
+                x = orig
+                num = 0  
+                n = 0
+        #not last word 
+        else:
+            if n > 2:
+                if x == 1:
+                    n = 0
+                    num = 0
+                else:
+                    line+= "and"
+                    num = 1
+                    n = 0
+            elif n == 2:
+                line+= getVerb(num)
+                n+= 1
+            elif n == 1:
+                line+= getAdjective(num)
+                n+= 1
+            elif n == 0:
+                g = getNoun(num)
+                if g[1] == "NNS" and x > 1:
+                    line += "the " + g[0]
+                    num = num + 1
+                elif g[1] == "NNS":
+                    line+= getNoun(num)[0]
+                    n+= 1
+                else:
+                    line+= g[0]
+                    n+= 1
         line+= " "
         x = x - num
     return line
 
 
-print makeLineSense(10)
+
+print makeLineRhymeSense(10,"good")
+print makeLineRhymeSense(10,"see")
+print makeLineRhymeSense(10,"good")
+print makeLineRhymeSense(10,"see")
