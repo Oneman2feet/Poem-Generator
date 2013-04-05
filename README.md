@@ -25,8 +25,13 @@ What we will have done by the Friday we get back from break:
 <li>Starting to put some of the stuff onto the front end.</li>
 </ul>
 
-What we will have done by the Friday after that:
+What we will have done by the Friday after that (4/12/13):
 <i> More Stuff </i>
+<ul>
+<li>Have some mongo stuff done for sessions</li>
+<li>Make the front end look prettier with less</li>
+<li>Plan donut budget</li>
+</ul>
 
 <u> What we currently have done </u>
 <ul>
