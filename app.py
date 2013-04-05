@@ -7,7 +7,7 @@ app.secret_key = "blah"
 @app.route("/", methods = ["GET"])
 def home():
     poems = [str(init.makeHaiku()) for x in range(0,10)]
-    return render_template("home.html",poems=poems)
+    return render_template("home.html", poems=poems)
 
 @app.route("/profile", methods = ["GET"])
 def profile():
@@ -15,7 +15,7 @@ def profile():
 
 @app.route("/generate", methods = ["GET","POST"])
 def generate():
-    return render_template("makepoem.html")
+    return render_template("makepoem.html", user = user)
 
 if __name__ == '__main__':
     app.run(debug = True, host="0.0.0.0", port = 5000)
