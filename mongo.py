@@ -15,7 +15,12 @@ def clearDB():
 def addUser(user,password):
     db = conn()
     d = {'user':user, 'pass':password, 'poems':[]}
-    db.users.insert(d)
+    r = db.users.find({'user':user})
+    if len(r) == 0:
+        db.users.insert(d)
+        return user
+    else:
+        return None
 
 def addPoem(user,poem):
     db = conn()
@@ -34,6 +39,3 @@ def getPoems(user):
 
 if __name__ == '__main__':
     addUser("batya","batya")
-    getPoems("batya")
-    addPoem("batya","this is a poem")
-    print getPoems("batya")
