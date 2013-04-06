@@ -33,7 +33,7 @@ h2 {
     font-size: 30px;
     line-height: 70px;
 } 
-#button2
+#profile
 {
 	width: 150px;
 	height: 40px;
@@ -55,14 +55,55 @@ h2 {
 	line-height: 40px;
 	text-align: centre;
 }
-#button2:hover
+#profile:hover
 {
 	box-shadow: 0 0 10px 0 #666, inset 0 1px #EEE;
 	-moz-box-shadow: 0 0 10px 0 #666, inset 0 1px #EEE;
 	-webkit-box-shadow: 0 0 10px 0 #666, inset 0 1px #EEE;
 	color: #444;
 }
-#button2:active
+#profile:active
+{
+	box-shadow: inset 0 0 8px #333;
+	-moz-box-shadow: inset 0 0 8px #333;
+	-webkit-box-shadow: inset 0 0 8px #333;
+	background: url(images/button2_active.png) repeat-x;
+	color: #EEE;
+	text-shadow: 1px 1px #444;
+	border: 1px solid #444;
+	border-bottom: 1px solid #EEE;
+	padding-left: 3px;
+}
+#createpoem
+{
+	width: 150px;
+	height: 40px;
+	background: url(images/button2.png) repeat-x;
+	border: 1px solid #AAA;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	cursor: pointer;
+	color: #666;
+	font-family: Arial, Helvetica;
+	font-size: 20px;
+	box-shadow: inset 0 1px #EEE;
+	-moz-box-shadow: inset 0 1px #EEE;
+	-webkit-box-shadow: inset 0 1px #EEE;
+	text-shadow: 1px 1px #CCC;
+	padding: 0;
+	margin: 0;
+	line-height: 40px;
+	text-align: centre;
+}
+#createpoem:hover
+{
+	box-shadow: 0 0 10px 0 #666, inset 0 1px #EEE;
+	-moz-box-shadow: 0 0 10px 0 #666, inset 0 1px #EEE;
+	-webkit-box-shadow: 0 0 10px 0 #666, inset 0 1px #EEE;
+	color: #444;
+}
+#createpoem:active
 {
 	box-shadow: inset 0 0 8px #333;
 	-moz-box-shadow: inset 0 0 8px #333;
@@ -108,9 +149,9 @@ And so is maple syrple</p>
 <br>
 
 <div id="button_container" style="margin-left: 25px;">
-  <button type="button" id="button2" onclick="window.location.href='profile.html'">Profile</button>
+  <button type="button" id="profile" onclick="window.location.href='profile.html'">Profile</button>
   <br>
-  <button type="button" id="button2" onclick="window.location.href='makepoem.html'">Create Poem!</button>
+  <button type="button" id="createpoem" onclick="window.location.href='makepoem.html'">Create Poem!</button>
 </div>
 
 
@@ -119,12 +160,12 @@ And so is maple syrple</p>
 <form action = ""class="well login" method="POST">
     <ul>  
         <label for="usermail"><b>Email</b></label>  
-        <input type="email" name="usermail" placeholder="yourusername@email.com" required></li>  
+        <input type="email" name="username" placeholder="yourusername@email.com" required></li>  
         <br>
         <label for="password"><b>Password</b></label>  
         <input type="password" name="password" placeholder="password" required></li>  
         <br><br>
-        <input type="submit" value="Login"> 
+        <input type="submit" id = "Login" value="Login"> 
 	<p>(New user? Click here to create an account)</p>
     </ul>
 </form>
