@@ -86,6 +86,7 @@ def makeHaiku():
     s = s + makeLine(5)
     return s
 
+####### Making shelves
 def makePreps():
     syl = shelve.open("syl")
     preps = shelve.open("prepositions")
@@ -182,7 +183,7 @@ def getRhyme(num, words):
         return choice(x)[1]
 
 #x is num of syllables for the line, word is word to rhyme on
-def makeRhymingLine(x, word):
+def makeRhymingLine(word, x=10):
     orig = x
     w = word
     words = getRhymes(word)
@@ -309,4 +310,4 @@ def makeBetterSonnet(word1, word2):
     return line
 
 
-#print makeBetterSonnet("arsenic","purple")
+#print makeBetterSonnet("see","good")
