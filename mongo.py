@@ -23,6 +23,14 @@ def addUser(user,password):
     else:
         return None
 
+def exists(user,password):
+    db.conn()
+    r = db.users.find({'user':user})
+    if len(r) == 0:
+        return False
+    else:
+        return True
+
 def addPoem(user,poem):
     db = conn()
     d = db.users.find({'user':user})

@@ -9,7 +9,7 @@
 <head>
 	<meta http-equiv= "Content-Type" content= "text/html; charset=UFT-8" />
 
-	<title>Home | Poem Generator</title>
+	<title>Register | Poem Generator</title>
 <style>
 p.sansserif{font-family:Arial, Helvetica, sans-serif}
 p.serif{ font-family: "Times New Roman", Times, serif;}
@@ -118,66 +118,16 @@ h2 {
 </style>
 </head>
 
-<body id = "home">
-<h1><center>Welcome to the Poem Generator!</center></h1>
-<br><br>
+<body id = "register">
+<h1><center>Register</center></h1>
 
-<div>
-<div style="float: right; margin-top: 200px;">
-<p>insert image maybe</p>
-</div>
-
-<div id="new_poem_section" style="float: right; margin-right: 400px;">  
-<h2>New Poems!</h2>
-
-{% for poem in poems %}
-<!-- <a href="/poem/{{poem.poetryid}}">{{poem.title}}</a> <br /> -->
-<p>{{poem|safe}}<p>
-{%endfor %}
-<br>
-EXAMPLE: <br>
-<p style="margin-left: 50px;"> There once was a sea oyster named Bob.<br>
-He ate some cotton candy. </br>
-Then died. :) </p> <br>
-
-<p style="margin-left: 50px;"> Roses are red.</br>
-Violets are purple</br>
-Sugar is sweet </br>
-And so is maple syrple</p>
-</div>
-</div>
-<br>
-
-<div id="button_container" style="margin-left: 25px;">
-  <button type="button" id="profile" onclick="window.location.href='profile.html'">Profile</button>
-  <br>
-  <button type="button" id="createpoem" onclick="window.location.href='makepoem.html'">Create Poem!</button>
-</div>
-
-
-<div id="login_section">
-<section class="loginform cf" style="margin-top: 100px;">  
-<form action = ""class="well login" method="POST">
-    <ul>  
-        <label for="usermail"><b>Email</b></label>  
-        <input type="email" name="username" placeholder="yourusername@email.com" required></li>  
+<form style="margin-top: 150px; margin-left: 350px;" action ="" method="POST">
+  <ul>
+    <label for="usermail"><b>Your email address</b></label>
+        <input type="email" name="username" placeholder="yourusername@email.com" required></li>
         <br>
-        <label for="password"><b>Password</b></label>  
-        <input type="password" name="password" placeholder="password" required></li>  
-        <br><br>
-        <input type="submit" id = "Login" value="Login"> 
-</form>
-<p>New user?</p>
-<form action="register.html">
-<input type="submit" id = "Register" value = "Register">
-</form>
-    </ul>
-</section>
-</div>
-	
+        <label for="password"><b>Create a password</b></label>
+        <input type="password" name="password" placeholder="password" required></li> 
 </form>
 </body>
 </html>
-
-	
-	
