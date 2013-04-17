@@ -37,7 +37,7 @@ def addPoem(user,poem):
     if f != None:
         db.poems.insert(k)
     else:
-        db.poems.update({'poems':[]},k)
+        db.poems.update({'poems':r},k)
     db.users.update({'user':user},d)
 
 def getPoems(user):
