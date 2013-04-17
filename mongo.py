@@ -24,12 +24,12 @@ def addUser(user,password):
         return None
 
 def exists(user,password):
-    db.conn()
+    db = conn()
     r = db.users.find({'user':user})
-    if len(r) == 0:
-        return False
-    else:
+    if r == None:
         return True
+    else:
+        return False
 
 def addPoem(user,poem):
     db = conn()
@@ -61,9 +61,5 @@ def getAllPoems():
     return l
 
 if __name__ == '__main__':
-    addPoem("Batya","this is a poem")
-    addPoem("D","poem2")
-    addPoem("Batya","poem3")
-    addPoem("Batya","poem4")
-    addPoem("D","poem5")
+    clearDB()
     

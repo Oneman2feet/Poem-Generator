@@ -17,34 +17,37 @@ def home():
             password = request.form.get("password")
             if mongo.exists(username, password):
                 session['user'] = username
-                return redirect("profile.html")
+                return profile(username)
             else:
                 return "Username is taken"
-        elif button == "Register":
-            return redirect("register.html")
+        #elif button == "Register":
+        #    return render_template("register.html")
     return render_template("home.html", poems=poems)
 
-@app.route("/profile", methods = ["GET"])
-def profile():
+@app.route("/profile", methods = ["GET","POST"])
+def profile(user):
+    user = user
     if 'user' in session:
-        return render_template("profile.html")
+        return render_template("profile.html", user=user)
     else:
         print "User Not Logged In"
         return redirect("home.html")
 
 @app.route("/generate", methods = ["GET","POST"])
 def generate():
-    return render_template("makepoem.html", user = user)
+    return render_template("makepoem.html")
 
 @app.route("/register",methods = ["GET","POST"])
 def register():
     if request.method == "POST":
         username = request.form.get("username")
         password = request.form.get("password")
-        mongo.addUser(username,password)
-        session['user'] = username
-        return redirect("profile")
-    
+        if not mongo.exists(username,password):
+            mongo.addUser(username,password)
+            session['user'] = username
+            return render_template("profile.html",user=username)
+        else:
+            print "This Username has already been taken"  
     return render_template("register.html")
 
 if __name__ == '__main__':
