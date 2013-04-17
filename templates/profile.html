@@ -93,6 +93,10 @@ h2, h3 {
 			<button type="button" id="button2" onclick="window.location.href='generate'">Create Poem!</button>
 		</div>
 <br>
+<form>
+<input type="button" value="logout"/>
+</form>
+<br>
 <h2>Your Poems!</h2>
 {% for poem in poems %}
 {{poem.text}}

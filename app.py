@@ -4,6 +4,7 @@ import init, mongo
 app = Flask(__name__)
 app.secret_key = "blah"
 
+global user
 
 @app.route("/", methods = ["GET", "POST"])
 def home():
@@ -11,23 +12,31 @@ def home():
     poems = [str(init.makeHaiku()) for x in range(0,10)]
 
     if request.method == "POST":
-        button = request.form['button']
-        if button == 'Login':
-            username = request.form.get("username")
-            password = request.form.get("password")
-            if mongo.exists(username, password):
-                session['user'] = username
-                return profile(username)
-            else:
-                return "Username is taken"
-        #elif button == "Register":
-        #    return render_template("register.html")
+        #button = request.form['button']
+        #if button == 'logout':
+        #    print "LOGGED OUT " + session['user']
+        #    session.pop('user',None)
+        #    return render_template("home.html",poems=poems)
+
+        username = request.form.get("username")
+        password = request.form.get("password")
+        if mongo.exists(username, password):
+            session['user'] = username
+            return render_template("profile.html",user=username)
+        else:
+            print "Incorrect username or password"
     return render_template("home.html", poems=poems)
 
 @app.route("/profile", methods = ["GET","POST"])
-def profile(user):
-    user = user
+def profile():
+    user = session['user']
     if 'user' in session:
+        if request.method == "POST":
+            button = request.form['button']
+            if button == 'logout':
+                print "LOGGED OUT " + session['user']
+                session.pop('user',None)
+                return render_template("home.html",poems=poems)
         return render_template("profile.html", user=user)
     else:
         print "User Not Logged In"
@@ -35,6 +44,11 @@ def profile(user):
 
 @app.route("/generate", methods = ["GET","POST"])
 def generate():
+    user = session['user']
+    if request.method == "POST":
+        button = request.form['button']
+        if button == "profile":
+            return render_template("profile.html",user=user)
     return render_template("makepoem.html")
 
 @app.route("/register",methods = ["GET","POST"])
@@ -49,6 +63,8 @@ def register():
         else:
             print "This Username has already been taken"  
     return render_template("register.html")
+
+
 
 if __name__ == '__main__':
     app.run(debug = True, host="0.0.0.0", port = 5000)
