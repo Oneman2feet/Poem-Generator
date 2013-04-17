@@ -22,7 +22,8 @@ def home():
         password = request.form.get("password")
         if mongo.exists(username, password):
             session['user'] = username
-            return render_template("profile.html",user=username)
+            poems = mongo.getPoems(username)
+            return render_template("profile.html",user=username,poems=poems)
         else:
             print "Incorrect username or password"
     return render_template("home.html", poems=poems)
@@ -31,13 +32,14 @@ def home():
 def profile():
     user = session['user']
     if 'user' in session:
+        poems = mongo.getPoems(user)
         if request.method == "POST":
             button = request.form['button']
             if button == 'logout':
                 print "LOGGED OUT " + session['user']
                 session.pop('user',None)
                 return render_template("home.html",poems=poems)
-        return render_template("profile.html", user=user)
+        return render_template("profile.html", user=user,poems=poems)
     else:
         print "User Not Logged In"
         return redirect("home.html")
@@ -49,6 +51,13 @@ def generate():
         button = request.form['button']
         if button == "profile":
             return render_template("profile.html",user=user)
+        if button == "Generate":
+            print "hi"
+            typer = request.form['select']
+            if typer == "haiku":
+                poem = init.makeHaiku()
+                mongo.addPoem(user,poem)
+            
     return render_template("makepoem.html")
 
 @app.route("/register",methods = ["GET","POST"])
@@ -59,7 +68,8 @@ def register():
         if not mongo.exists(username,password):
             mongo.addUser(username,password)
             session['user'] = username
-            return render_template("profile.html",user=username)
+            poems = []
+            return render_template("profile.html",user=username,poems=poems)
         else:
             print "This Username has already been taken"  
     return render_template("register.html")
