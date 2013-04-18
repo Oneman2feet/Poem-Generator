@@ -1,22 +1,3 @@
-<!DOCTYPE HTML>
-<html>
-
-<html xmins = "http://www.w3.org/1999/xhtml">
-<link href="http://fonts.googleapis.com/css?family=Goudy+Bookletter+1911" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=Raleway:100" rel="stylesheet" type="text/css">
-
-
-<head>
-	<meta http-equiv= "Content-Type" content= "text/html; charset=UFT-8" />
-
-	<title>Register | Poem Generator</title>
-<style>
-p.sansserif{font-family:Arial, Helvetica, sans-serif}
-p.serif{ font-family: "Times New Roman", Times, serif;}
-body
-{
-background-color:#CC9999;
-}
 h1 {
     font-family: 'Raleway', Helvetica, Arial, sans-serif;
     font-size: 50px;
@@ -115,23 +96,3 @@ h2 {
 	border-bottom: 1px solid #EEE;
 	padding-left: 3px;
 }    
-</style>
-</head>
-
-<body id = "register">
-<h1><center>Register</center></h1>
-
-<form style="margin-top: 150px; margin-left: 350px;" action ="" method="POST">
-  <ul>
-    <label for="username"><b>Your email address</b></label>
-        <input type="email" name="username" placeholder="yourusername@email.com" required></li>
-        <br>
-        <label for="password"><b>Create a password</b></label>
-        <input type="password" name="password" placeholder="password" required></li> 
-</form>
-<br/>
-<!-- <form action="register"> -->
-<input type="submit" id="Register" value="Register"/>
-<!-- </form> -->
-</body>
-</html>
