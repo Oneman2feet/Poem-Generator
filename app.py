@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, session
-import init, mongo
+import mongo #,init
 
 app = Flask(__name__)
 app.secret_key = "blah"
@@ -9,24 +9,30 @@ global user
 @app.route("/", methods = ["GET", "POST"])
 def home():
     #change this to 10 of most recent poems
-    poems = [str(init.makeHaiku()) for x in range(0,10)]
+    #    poems = [str(init.makeHaiku()) for x in range(0,10)]
+    poems = ["hi"]
 
+    if 'user' in session:
+        if request.method == "GET":
+            return render_template("home.html",poems=poems,loggedin=True)
+        if request.method == "POST":
+            if button == "Logout":
+                print "LOGOUT"
+                return render_template("logout.html")
+    
     if request.method == "POST":
-        #button = request.form['button']
-        #if button == 'logout':
-        #    print "LOGGED OUT " + session['user']
-        #    session.pop('user',None)
-        #    return render_template("home.html",poems=poems)
-
-        username = request.form.get("username")
-        password = request.form.get("password")
-        if mongo.exists(username, password):
-            session['user'] = username
-            poems = mongo.getPoems(username)
-            return render_template("profile.html",user=username,poems=poems)
-        else:
-            print "Incorrect username or password"
-    return render_template("home.html", poems=poems)
+        button = request.form['button']
+        if button == 'Login':
+            username = request.form.get("username")
+            password = request.form.get("password")
+            if mongo.exists(username, password):
+                session['user'] = username
+                poems = mongo.getPoems(username)
+                return render_template("profile.html",user=username,poems=poems)
+            else:
+                print "Incorrect username or password"
+        
+    return render_template("home.html", poems=poems,loggedin=False)
 
 @app.route("/profile", methods = ["GET","POST"])
 def profile():
@@ -55,7 +61,7 @@ def generate():
             print "hi"
             typer = request.form['select']
             if typer == "haiku":
-                poem = init.makeHaiku()
+        #        poem = init.makeHaiku()
                 mongo.addPoem(user,poem)
             
     return render_template("makepoem.html")
@@ -74,7 +80,12 @@ def register():
             print "This Username has already been taken"  
     return render_template("register.html")
 
-
+@app.route("/logout",methods=["GET","POST"])
+def logout():
+    session.pop(user,None)
+    user = None
+    print "LOGGED OUT"
+    return redirect(url_for(home))
 
 if __name__ == '__main__':
     app.run(debug = True, host="0.0.0.0", port = 5000)

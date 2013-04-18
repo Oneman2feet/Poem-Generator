@@ -59,11 +59,12 @@ And so is maple syrple</p>
   <button type="button" id="createpoem" onclick="window.location.href='generate'">Create Poem!</button>
 </div>
 
-
 <div id="login_section">
 <section class="loginform cf" style="margin-top: 100px;">  
 <form action = ""class="well login" method="POST">
     <ul>  
+{% if not loggedin %}
+
         <label for="usermail"><b>Email</b></label>  
         <input type="email" name="username" placeholder="yourusername@email.com" required></li>  
         <br>
@@ -77,9 +78,18 @@ And so is maple syrple</p>
 <input type="submit" id = "Register" value = "Register">
 </form> 
 
+{% else %}
+
+<form action="logout">
+<input type="submit" id="Logout" value="Logout">
+</form>
+
+{% endif %}
+
     </ul>
 </section>
 </div>
+
 	
 </form>
 </body>
