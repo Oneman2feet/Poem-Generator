@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, session
-import mongo #,init
+import mongo, init
 
 app = Flask(__name__)
 app.secret_key = "blah"
@@ -9,7 +9,7 @@ global user
 @app.route("/", methods = ["GET", "POST"])
 def home():
     #change this to 10 of most recent poems
-    #    poems = [str(init.makeHaiku()) for x in range(0,10)]
+    poems = [str(init.makeHaiku()) for x in range(0,10)]
     poems = ["hi"]
 
     if 'user' in session:
@@ -44,18 +44,15 @@ def profile():
 @app.route("/generate", methods = ["GET","POST"])
 def generate():
     user = session['user']
+    poem=""
     if request.method == "POST":
-        button = request.form['button']
-        if button == "profile":
-            return render_template("profile.html",user=user)
-        if button == "Generate":
-            print "hi"
-            typer = request.form['select']
-            if typer == "haiku":
-        #        poem = init.makeHaiku()
-                mongo.addPoem(user,poem)
+        print request.form
+        typer = request.form['type']
+        if typer == "haiku":
+            poem = init.makeHaiku()
+            mongo.addPoem(user,poem)
             
-    return render_template("makepoem.html")
+    return render_template("makepoem.html",poem=poem)
 
 @app.route("/register",methods = ["GET","POST"])
 def register():
@@ -83,5 +80,3 @@ if __name__ == '__main__':
 
 
 
-####Fix buttons
-####

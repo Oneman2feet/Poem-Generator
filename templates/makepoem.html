@@ -94,6 +94,7 @@ h2 {
 <form action = "" method = "POST">
 <b> Theme: </b>
 <select name = "theme" id = "theme">
+<option value = ""></option>
 <option value = "nature"> Nature </option>
 <option value = "love"> Love </option>
 <option value = "school"> School </option>
@@ -102,6 +103,7 @@ h2 {
 </select>
 <b> Form: </b>
 <select name = "type" id = "type">
+<option value = ""></option>
 <option value = "haiku"> Haiku </option>
 <option value = "sonnet"> Sonnet </option>
 <option value = "free verse"> Free Verse </option>
@@ -110,6 +112,15 @@ h2 {
 <input type= "text" name="lines" id="lines">
 <input type ="submit" value = "Generate">	
 </form>
+
+<div id="Poem">
+<br>
+<b> Your Poem </b>
+<br>
+{{poem}}
+</div>
+
+
 </body>
 </html>
 

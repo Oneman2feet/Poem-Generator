@@ -1,4 +1,3 @@
-
 import nltk, re, nltk.data, curses, random, shelve, urllib2, json
 from curses.ascii import isdigit
 from nltk.corpus import cmudict
