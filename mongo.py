@@ -50,9 +50,11 @@ def addPoem(user,poem):
 
 def getPoems(user):
     db = conn()
-    d = db.users.find({'user':user})
-    d = d[0]
-    return d['poems']
+    d = [x for x in db.users.find({'user':user})]
+    if len(d) > 0:
+        return d[0]['poems']
+    else:
+        return [""]
 
 def getAllPoems():
     db = conn()
