@@ -15,7 +15,7 @@ def clearDB():
 
 def addUser(user,password):
     db = conn()
-    d = {'user':user, 'pass':password, 'poems':[]}
+    d = {'user':user, 'pass':password, 'poems':[""]}
     r = db.users.find({'user':user})
     if r != None:
         db.users.insert(d)
@@ -27,9 +27,9 @@ def exists(user,password):
     db = conn()
     r = db.users.find({'user':user})
     if r == None:
-        return True
-    else:
         return False
+    else:
+        return True
 
 def addPoem(user,poem):
     db = conn()

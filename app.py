@@ -16,39 +16,30 @@ def home():
         if request.method == "GET":
             return render_template("home.html",poems=poems,loggedin=True)
         if request.method == "POST":
-            if button == "Logout":
-                print "LOGOUT"
-                return render_template("logout.html")
+            print "LOGOUT"
+            logout()
     
     if request.method == "POST":
-        button = request.form['button']
-        if button == 'Login':
-            username = request.form.get("username")
-            password = request.form.get("password")
-            if mongo.exists(username, password):
-                session['user'] = username
-                poems = mongo.getPoems(username)
-                return render_template("profile.html",user=username,poems=poems)
-            else:
-                print "Incorrect username or password"
+        username = request.form.get("username")
+        password = request.form.get("password")
+        if mongo.exists(username, password):
+            session['user'] = username
+            poems = mongo.getPoems(username)
+            return render_template("profile.html",user=username,poems=poems)
+        else:
+            print "Incorrect username or password"
         
     return render_template("home.html", poems=poems,loggedin=False)
 
 @app.route("/profile", methods = ["GET","POST"])
 def profile():
-    user = session['user']
     if 'user' in session:
+        user = session['user']
         poems = mongo.getPoems(user)
-        if request.method == "POST":
-            button = request.form['button']
-            if button == 'logout':
-                print "LOGGED OUT " + session['user']
-                session.pop('user',None)
-                return render_template("home.html",poems=poems)
         return render_template("profile.html", user=user,poems=poems)
     else:
         print "User Not Logged In"
-        return redirect("home.html")
+        return redirect("/")
 
 @app.route("/generate", methods = ["GET","POST"])
 def generate():
@@ -82,10 +73,10 @@ def register():
 
 @app.route("/logout",methods=["GET","POST"])
 def logout():
-    session.pop(user,None)
+    session.pop('user',None)
     user = None
     print "LOGGED OUT"
-    return redirect(url_for(home))
+    return redirect("/")
 
 if __name__ == '__main__':
     app.run(debug = True, host="0.0.0.0", port = 5000)
