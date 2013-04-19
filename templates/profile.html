@@ -30,7 +30,11 @@
 <br>
 <h2>Your Poems!</h2>
 {% for poem in poems %}
-{{poem.text}}
+<p>
+{% for line in poem %}
+{{line}}
+<br>
+{% endfor %}
 {% endfor %}
 </form>
 </body>

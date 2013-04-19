@@ -303,28 +303,28 @@ def makeLineRhymeSense(x,word):
 ##Poems
 
 def makeHaiku():
-    s = ""
-    s = s + makeLine(5) + '<br/>'
-    s = s + makeLine(7) + '<br/>'
-    s = s + makeLine(5)
+    s = []
+    s.append(makeLine(5))
+    s.append(makeLine(7))
+    s.append(makeLine(5))
     return s
 
 def makeBetterSonnet(word1, word2):
-    line = ""
+    line = []
     #print getRhymes(word)
     for i in range(0,10):
         if i%2 == 0:
-            line += makeLineRhymeSense(10,word1) + '\n'
+            line.append(makeLineRhymeSense(10,word1))
         else:
-            line += makeLineRhymeSense(10,word2) + '\n'
+            line.append(makeLineRhymeSense(10,word2))
     return line
 
 def makeFreeVerse(word1,word2,lines):
-    line = ""
+    line = []
     for i in range (0,lines):
         if i%2 == 0:
-            line += makeLineRhymeSense(8,word1) + '/n'
+            line.append(makeLineRhymeSense(8,word1))
         else:
-            line += makeLineRhymeSense(8,word2) + '/n'
+            line.append(makeLineRhymeSense(8,word2))
     return line
         

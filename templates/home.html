@@ -34,21 +34,13 @@ background-color:#CC9999;
 
 <div id="new_poem_section" style="float: right; margin-right: 400px;">  
 <h2>New Poems!</h2>
-
 {% for poem in poems %}
-<!-- <a href="/poem/{{poem.poetryid}}">{{poem.title}}</a> <br /> -->
-<p>{{poem|safe}}<p>
-{%endfor %}
+<p>
+{% for line in poem %}
+{{line}}
 <br>
-EXAMPLE: <br>
-<p style="margin-left: 50px;"> There once was a sea oyster named Bob.<br>
-He ate some cotton candy. </br>
-Then died. :) </p> <br>
-
-<p style="margin-left: 50px;"> Roses are red.</br>
-Violets are purple</br>
-Sugar is sweet </br>
-And so is maple syrple</p>
+{% endfor %}
+{% endfor %}
 </div>
 </div>
 <br>
