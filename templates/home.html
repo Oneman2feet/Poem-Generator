@@ -49,13 +49,11 @@
 		<h2>New Poems!</h2>
 
 		{% for poem in poems %}
-			{% for poem in poems %}
-			<p>
-				{% for line in poem %}
-				{{line}}<br/>
-				{% endfor %}
-			</p>
+		<p>
+			{% for line in poem %}
+			{{line}}<br/>
 			{% endfor %}
+		</p>
 		{% endfor %}
 		
 	</div>
