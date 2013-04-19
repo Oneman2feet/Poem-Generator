@@ -14,7 +14,37 @@
 	<style type="text/css"> @import "../static/style.css"; </style>
 </head>
 
+<<<<<<< HEAD
 <body>
+=======
+<body id = "home">
+<h1><center>Welcome to the Poem Generator!</center></h1>
+<br><br>
+
+<div>
+<div style="float: right; margin-top: 200px;">
+<p>insert image maybe</p>
+</div>
+
+<div id="new_poem_section" style="float: right; margin-right: 400px;">  
+<h2>New Poems!</h2>
+{% for poem in poems %}
+<p>
+{% for line in poem %}
+{{line}}
+<br>
+{% endfor %}
+{% endfor %}
+</div>
+</div>
+<br>
+
+<div id="button_container" style="margin-left: 25px;">
+  <button type="button" id="profile" onclick="window.location.href='profile'">Profile</button>
+  <br>
+  <button type="button" id="createpoem" onclick="window.location.href='generate'">Create Poem!</button>
+</div>
+>>>>>>> ec042e570986c6fcd17ef156102fc69f7de60ea4
 
 	<h1>Welcome to the Poem Generator!</h1>
 

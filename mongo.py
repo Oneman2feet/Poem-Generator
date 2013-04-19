@@ -33,20 +33,20 @@ def exists(user,password):
 
 def addPoem(user,poem):
     db = conn()
-    d = db.users.find({'user':user})
-    f = db.poems.find()
-    d = d[0]
-    li = d['poems']
-    li.append(poem)
-
-    r = [x for x in f]
-    r.append(poem)
-    k = {'poems':r}
-    if f != None:
-        db.poems.insert(k)
+    d = [x for x in db.users.find({'user':user})]
+    f = [x for x in db.poems.find()]
+    if len(d) > 0:
+        d = d[0]
+        li = d['poems']
+        li.append(poem)
+        db.users.update({'user':user},d)
     else:
-        db.poems.update({'poems':r},k)
-    db.users.update({'user':user},d)
+        d = {'user':user,'poems':[poem]}
+        db.users.insert(d)
+
+    
+    db.poems.insert({'user':user,'poem':poem})
+
 
 def getPoems(user):
     db = conn()
@@ -59,8 +59,9 @@ def getPoems(user):
 def getAllPoems():
     db = conn()
     d = {'poems':[]}
-    l = db.poems
-    return l
+    l = [x for x in db.poems.find()]
+    r = [x['poem'] for x in l]
+    return r
 
 if __name__ == '__main__':
     clearDB()

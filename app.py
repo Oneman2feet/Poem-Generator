@@ -9,10 +9,12 @@ global user
 @app.route("/", methods = ["GET", "POST"])
 def home():
     #change this to 10 of most recent poems
-    poems = [str(init.makeHaiku()) for x in range(0,10)]
-    poems = ["hi"]
+    poems = [""]
 
     if 'user' in session:
+        poems = mongo.getAllPoems()
+        poems.reverse()
+        poems = poems[:10]
         if request.method == "GET":
             return render_template("home.html",poems=poems,loggedin=True)
         if request.method == "POST":
@@ -36,6 +38,7 @@ def profile():
     if 'user' in session:
         user = session['user']
         poems = mongo.getPoems(user)
+        print poems
         return render_template("profile.html", user=user,poems=poems)
     else:
         print "User Not Logged In"
@@ -51,7 +54,16 @@ def generate():
         if typer == "haiku":
             poem = init.makeHaiku()
             mongo.addPoem(user,poem)
-            
+        if typer == "sonnet":
+            poem = init.makeBetterSonnet("me","you")
+            mongo.addPoem(user,poem)
+        if typer == "free verse":
+            lines = request.form['lines']
+            if lines == "":
+                poem = init.makeFreeVerse("me","you",8)
+            else:
+                poem = init.makeFreeVerse("me","you",int(lines))
+            mongo.addPoem(user,poem)
     return render_template("makepoem.html",poem=poem)
 
 @app.route("/register",methods = ["GET","POST"])
