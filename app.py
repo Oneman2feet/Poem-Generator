@@ -13,22 +13,32 @@ def home():
     poems = poems[:10]
 
     if 'user' in session:
+        print "USER IN SESSION"
         if request.method == "GET":
             return render_template("home.html",poems=poems,loggedin=True)
-        if request.method == "POST":
-            print "LOGOUT"
-            logout()
     
-    if request.method == "POST":
+    elif request.method == "POST":
+        print request.form
         username = request.form.get("username")
         password = request.form.get("password")
-        if mongo.exists(username, password):
-            session['user'] = username
-            poems = mongo.getPoems(username)
-            return render_template("profile.html",user=username,poems=poems)
-        else:
-            print "Incorrect username or password"
-        
+        button = request.form['button']
+        if button=='Login':
+            print mongo.exists(username,password)
+            if mongo.exists(username, password):
+                session['user'] = username
+                poems = mongo.getPoems(username)
+                return render_template("profile.html",user=username,poems=poems)
+            else:
+                print "Incorrect login info"
+                return redirect(url_for(home))
+        elif button=='Register':
+            print mongo.exists(username,password)
+            if not mongo.exists(username, password):
+                session['user'] = username
+                mongo.addUser(username, password)
+                poems = []
+                return render_template("profile.html",user=username,poems=poems)
+    
     return render_template("home.html", poems=poems,loggedin=False)
 
 @app.route("/profile", methods = ["GET","POST"])
@@ -36,6 +46,7 @@ def profile():
     if 'user' in session:
         user = session['user']
         poems = mongo.getPoems(user)
+        poems.reverse()
         print poems
         return render_template("profile.html", user=user,poems=poems)
     else:
@@ -64,20 +75,6 @@ def generate():
             mongo.addPoem(user,poem)
     return render_template("makepoem.html",poem=poem)
 
-@app.route("/register",methods = ["GET","POST"])
-def register():
-    if request.method == "POST":
-        username = request.form.get("username")
-        password = request.form.get("password")
-        if mongo.exists(username,password):
-            mongo.addUser(username,password)
-            session['user'] = username
-            poems = []
-            return render_template("profile.html",user=username,poems=poems)
-        else:
-            print "This Username has already been taken"  
-    return render_template("register.html")
-
 @app.route("/logout",methods=["GET","POST"])
 def logout():
     session.pop('user',None)
@@ -86,7 +83,7 @@ def logout():
     return redirect("/")
 
 if __name__ == '__main__':
-    app.run(debug = True, host="0.0.0.0", port = 7755)
+    app.run(debug = True, host="0.0.0.0", port = 7999)
 
 
 

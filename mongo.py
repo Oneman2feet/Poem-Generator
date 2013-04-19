@@ -25,8 +25,8 @@ def addUser(user,password):
 
 def exists(user,password):
     db = conn()
-    r = db.users.find({'user':user})
-    if r == None:
+    r = [x for x in db.users.find({'user':user})]
+    if len(r) == 0:
         return False
     else:
         return True
