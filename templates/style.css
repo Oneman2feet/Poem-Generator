@@ -90,7 +90,7 @@ h2 {
 
 form.login
 {
-	width: 230px;
+	width: 250px;
 }
 
 form.login div
@@ -101,11 +101,13 @@ form.login div
 form.login input
 {
 	float: right;
+	width: 150px;
 }
 
 input#Login
 {
 	float: left;
+	width: auto;
 }
 
 #createpoem
