@@ -8,13 +8,11 @@ global user
 
 @app.route("/", methods = ["GET", "POST"])
 def home():
-    #change this to 10 of most recent poems
-    poems = [""]
+    poems = mongo.getAllPoems()
+    poems.reverse()
+    poems = poems[:10]
 
     if 'user' in session:
-        poems = mongo.getAllPoems()
-        poems.reverse()
-        poems = poems[:10]
         if request.method == "GET":
             return render_template("home.html",poems=poems,loggedin=True)
         if request.method == "POST":
