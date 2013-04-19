@@ -18,29 +18,33 @@
 	<h1>Welcome to the Poem Generator!</h1>
 
 	<div id="sidebar">
-	
-		<div id="button_container">
-			<button type="button" id="profile" onclick="window.location.href='profile'">Profile</button>
-			<button type="button" id="createpoem" onclick="window.location.href='generate'">Create Poem!</button>
-		</div>
 
-		<div id="login_section">
-			<section class="loginform cf"> 
-				{% if not loggedin %} 
-				<form action="" class="well login" method="POST"> 
-					<div><label for="usermail"><b>Email</b></label>  
-					<input type="email" name="username" required></div>
-					<div><label for="password"><b>Password</b></label>  
-					<input type="password" name="password" required></div> 
-					<div><input type="submit" id="Login" value="Login">
-					<input type="submit" id="Register" value="Register"><div>
+	  {% if not loggedin %}
+	  <div id="login_section">
+		<section class="loginform cf"> 
+			<form action="" class="well login" method="POST"> 
+				<div>
+				  <label for="usermail"><b>Email</b></label>  
+				  <input type="email" class="textbox" name="username" required>
+				</div>
+				<div>
+				  <label for="password"><b>Password</b></label>  
+				  <input type="password" class="textbox" name="password" required>
+				</div> 
+				<div id="sub">
+				  <input type="submit" id="Login" value="Login"/>
+				  <input type="submit" id="Register" value="Register"/>
+				</div>
 				</form> 
-				
-				{% else %}
-				<a href="/logout">Logout</a>
-				{% endif %}
-			</section>
-		</div>
+		</section>
+	  </div>
+	  {% else %}
+	  <div id="button_container">
+		<button type="button" id="profile" onclick="window.location.href='profile'">Profile</button>
+		<button type="button" id="createpoem" onclick="window.location.href='generate'">Create Poem!</button>
+		<button type="button" id="logout" onclick="window.location.href='logout'">Logout</button>
+	  </div>
+	  {% endif %}
 		
 	</div>
 	
