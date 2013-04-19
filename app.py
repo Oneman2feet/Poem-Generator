@@ -71,7 +71,7 @@ def register():
     if request.method == "POST":
         username = request.form.get("username")
         password = request.form.get("password")
-        if not mongo.exists(username,password):
+        if mongo.exists(username,password):
             mongo.addUser(username,password)
             session['user'] = username
             poems = []
