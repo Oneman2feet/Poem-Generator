@@ -23,8 +23,7 @@ def home():
         password = request.form.get("password")
         button = request.form['button']
         if button=='Login':
-            print mongo.exists(username,password)
-            if mongo.exists(username, password):
+            if mongo.checkUser(username, password):
                 session['user'] = username
                 poems = mongo.getPoems(username)
                 return render_template("profile.html",user=username,poems=poems)

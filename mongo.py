@@ -31,6 +31,19 @@ def exists(user,password):
     else:
         return True
 
+def checkUser(user,password):
+    db = conn()
+    r = [x for x in db.users.find({'user':user})]
+    if len(r) == 0:
+        return False
+    else:
+        a = r[0]
+        if a['user'] == user and a['pass'] == password:
+            return True
+        else:
+            return False
+
+
 def addPoem(user,poem):
     db = conn()
     d = [x for x in db.users.find({'user':user})]
