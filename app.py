@@ -5,6 +5,8 @@ app = Flask(__name__)
 app.secret_key = "blah"
 
 global user
+global poem
+poem = "" 
 
 @app.route("/", methods = ["GET", "POST"])
 def home():
@@ -57,24 +59,22 @@ def profile():
 @app.route("/generate", methods = ["GET","POST"])
 def generate():
     user = session['user']
-    poem=""
+    global poem
     made = False
     if request.method == "POST":
         print request.form
-        made = True
         button = request.form['button']
-        if button == "Add Poem":
-            print "HI"
-            mongo.addPoem(user,poem)
-            poem = ["Would you like to make another poem?"]
-            made = False
-            return render_template("makepoem.html",poem=poem,made=made)
         if button == "Generate":
             typer = request.form['type']
+            if typer != "":
+                 made = True
             if typer == "haiku":
                 poem = init.makeHaiku()
+                print poem
+                #addPoem()
             if typer == "sonnet":
                 poem = init.makeBetterSonnet("me","you")
+                #addPoem()
             if typer == "free verse":
                 lines = request.form['lines']
                 if lines == "":
@@ -82,7 +82,11 @@ def generate():
                 else:
                     poem = init.makeFreeVerse("me","you",int(lines))
             return render_template("makepoem.html",poem=poem,made=made)
-    return render_template("makepoem.html",poem=poem,made=made)
+        if button == "Add Poem":
+            mongo.addPoem(user, poem)
+            return render_template("makepoem.html",poem=["Would you like to make a new poem?"],made=False)
+    return render_template("makepoem.html",poem="",made=made)
+
 
 @app.route("/logout",methods=["GET","POST"])
 def logout():

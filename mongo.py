@@ -56,8 +56,7 @@ def addPoem(user,poem):
     else:
         d = {'user':user,'poems':[poem]}
         db.users.insert(d)
-
-    
+    print d
     db.poems.insert({'user':user,'poem':poem})
 
 
@@ -75,11 +74,14 @@ def getAllPoems():
     l = [x for x in db.poems.find()]
     r = [x for x in l]
     for x in r:
-        l = x['poem']
-        print l
+        print x
+        if len(x['poem']) == 0:
+            b = [x['poem']]
+        else:
+            b = x['poem']
         a = "~~  " + x['user']
-        l.append(a)
-        pomes.append(l)
+        b.append(a)
+        pomes.append(b)
     return pomes
 
 if __name__ == '__main__':
