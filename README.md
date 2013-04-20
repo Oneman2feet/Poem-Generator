@@ -11,6 +11,8 @@ Poem-Generator
 <b>Front End: </b> Amanda and Tiffany
 <b>Back End: </b> Batya and Zachary
 
+<b>Currently located on port <i>7999</i> </b>
+
 <b>Our project: </b>
 
 The Poem-Generator will have a better name by Friday.
