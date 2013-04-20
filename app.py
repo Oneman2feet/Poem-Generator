@@ -11,11 +11,11 @@ def home():
     poems = mongo.getAllPoems()
     poems.reverse()
     poems = poems[:10]
-
+    error = ""
     if 'user' in session:
         print "USER IN SESSION"
         if request.method == "GET":
-            return render_template("home.html",poems=poems,loggedin=True)
+            return render_template("home.html",poems=poems,loggedin=True,error=error)
     
     elif request.method == "POST":
         print request.form
@@ -29,8 +29,8 @@ def home():
                 poems = mongo.getPoems(username)
                 return render_template("profile.html",user=username,poems=poems)
             else:
-                print "Incorrect login info"
-                return redirect(url_for(home))
+                error = "Incorrect username or password"
+                return render_template("home.html",poems=poems,loggedin=False,error=error)
         elif button=='Register':
             print mongo.exists(username,password)
             if not mongo.exists(username, password):
@@ -38,8 +38,10 @@ def home():
                 mongo.addUser(username, password)
                 poems = []
                 return render_template("profile.html",user=username,poems=poems)
-    
-    return render_template("home.html", poems=poems,loggedin=False)
+            else:
+                error = "Username already exists"
+                return render_template("home.html",poems=poems,loggedin=False,error=error)
+    return render_template("home.html", poems=poems,loggedin=False,error=error)
 
 @app.route("/profile", methods = ["GET","POST"])
 def profile():
