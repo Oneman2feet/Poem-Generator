@@ -75,9 +75,17 @@ def generate():
                 print poem
                 #addPoem()
             if typer == "sonnet":
+                if rhyme1 == "":
+                    rhyme1 = "word"
+                if rhyme2 == "":
+                    rhyme2 = "place"
                 poem = init.makeBetterSonnet(rhyme1,rhyme2)
                 #addPoem()
             if typer == "free verse":
+                if rhyme1 == "":
+                    rhyme1 = "word"
+                if rhyme2 == "":
+                    rhyme2 = "place"
                 lines = request.form['lines']
                 if lines == "":
                     poem = init.makeFreeVerse(rhyme1,rhyme2,8)
