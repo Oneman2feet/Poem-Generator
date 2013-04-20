@@ -58,23 +58,31 @@ def profile():
 def generate():
     user = session['user']
     poem=""
+    made = False
     if request.method == "POST":
         print request.form
-        typer = request.form['type']
-        if typer == "haiku":
-            poem = init.makeHaiku()
+        made = True
+        button = request.form['button']
+        if button == "Add Poem":
+            print "HI"
             mongo.addPoem(user,poem)
-        if typer == "sonnet":
-            poem = init.makeBetterSonnet("me","you")
-            mongo.addPoem(user,poem)
-        if typer == "free verse":
-            lines = request.form['lines']
-            if lines == "":
-                poem = init.makeFreeVerse("me","you",8)
-            else:
-                poem = init.makeFreeVerse("me","you",int(lines))
-            mongo.addPoem(user,poem)
-    return render_template("makepoem.html",poem=poem)
+            poem = ["Would you like to make another poem?"]
+            made = False
+            return render_template("makepoem.html",poem=poem,made=made)
+        if button == "Generate":
+            typer = request.form['type']
+            if typer == "haiku":
+                poem = init.makeHaiku()
+            if typer == "sonnet":
+                poem = init.makeBetterSonnet("me","you")
+            if typer == "free verse":
+                lines = request.form['lines']
+                if lines == "":
+                    poem = init.makeFreeVerse("me","you",8)
+                else:
+                    poem = init.makeFreeVerse("me","you",int(lines))
+            return render_template("makepoem.html",poem=poem,made=made)
+    return render_template("makepoem.html",poem=poem,made=made)
 
 @app.route("/logout",methods=["GET","POST"])
 def logout():
