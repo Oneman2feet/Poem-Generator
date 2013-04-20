@@ -53,6 +53,7 @@ def addPoem(user,poem):
         li = d['poems']
         li.append(poem)
         db.users.update({'user':user},d)
+        print d
     else:
         d = {'user':user,'poems':[poem]}
         db.users.insert(d)

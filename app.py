@@ -18,7 +18,7 @@ def home():
             return render_template("home.html",poems=poems,loggedin=True,error=error)
     
     elif request.method == "POST":
-        print request.form
+        print "HI THERE PEOPLE"
         username = request.form.get("username")
         password = request.form.get("password")
         button = request.form['button']
@@ -40,6 +40,7 @@ def home():
             else:
                 error = "Username already exists"
                 return render_template("home.html",poems=poems,loggedin=False,error=error)
+        
     return render_template("home.html", poems=poems,loggedin=False,error=error)
 
 @app.route("/profile", methods = ["GET","POST"])
@@ -48,7 +49,6 @@ def profile():
         user = session['user']
         poems = mongo.getPoems(user)
         poems.reverse()
-        print poems
         return render_template("profile.html", user=user,poems=poems)
     else:
         print "User Not Logged In"
