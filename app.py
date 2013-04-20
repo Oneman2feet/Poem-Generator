@@ -66,6 +66,8 @@ def generate():
         button = request.form['button']
         if button == "Generate":
             typer = request.form['type']
+            rhyme1 = request.form['rhyme1']
+            rhyme2 = request.form['rhyme2']
             if typer != "":
                  made = True
             if typer == "haiku":
@@ -73,14 +75,14 @@ def generate():
                 print poem
                 #addPoem()
             if typer == "sonnet":
-                poem = init.makeBetterSonnet("me","you")
+                poem = init.makeBetterSonnet(rhyme1,rhyme2)
                 #addPoem()
             if typer == "free verse":
                 lines = request.form['lines']
                 if lines == "":
-                    poem = init.makeFreeVerse("me","you",8)
+                    poem = init.makeFreeVerse(rhyme1,rhyme2,8)
                 else:
-                    poem = init.makeFreeVerse("me","you",int(lines))
+                    poem = init.makeFreeVerse(rhyme1,rhyme2,int(lines))
             return render_template("makepoem.html",poem=poem,made=made)
         if button == "Add Poem":
             mongo.addPoem(user, poem)
