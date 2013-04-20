@@ -71,10 +71,15 @@ def getPoems(user):
 
 def getAllPoems():
     db = conn()
-    d = {'poems':[]}
+    pomes = []
     l = [x for x in db.poems.find()]
-    r = [x['poem'] for x in l]
-    return r
+    r = [x for x in l]
+    for x in r:
+        l = x['poem']
+        a = "~~  " + x['user']
+        l.append(a)
+        pomes.append(l)
+    return pomes
 
 if __name__ == '__main__':
     clearDB()
