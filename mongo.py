@@ -56,7 +56,6 @@ def addPoem(user,poem):
     else:
         d = {'user':user,'poems':[poem]}
         db.users.insert(d)
-    print d
     db.poems.insert({'user':user,'poem':poem})
 
 
@@ -74,7 +73,6 @@ def getAllPoems():
     l = [x for x in db.poems.find()]
     r = [x for x in l]
     for x in r:
-        print x
         if len(x['poem']) == 0:
             b = [x['poem']]
         else:
