@@ -10,81 +10,90 @@
 	<meta http-equiv= "Content-Type" content= "text/html; charset=UFT-8" />
 
 	<title>Make Poem | Poem Generator</title>
+	<style type="text/css"> {% include "style.css" %} </style>
 	<style type="text/css"> {% include "makepoem.css" %} </style>
 </head>
 
-<body id = "home">
-<h1><center>Create your own Poem!</center></h1>
-<br>
+<body id="home">
 
+	<h1>Create your own Poem!</h1>
 
-<div id="button_container" style="margin-left: 1300px;">
-			<button type="button" id="button2" onclick="window.location.href='profile'">Profile</button>
+	<div id="sidebar">
+	  <div id="button_container">
+	  	<button type="button" id="home" onclick="window.location.href='/'">Home</button>
+		<button type="button" id="profile" onclick="window.location.href='profile'">Profile</button>
+		<button type="button" id="logout" onclick="window.location.href='logout'">Logout</button>
+	  </div>
+	</div>
+	
+	<div id="main-content">
+	
+		<h2>Options:</h2>
+		
+		<form action = "" method = "POST">
+			
+			<!--  <b> Theme: </b>
+			<select name = "theme" id = "theme">
+			<option value = ""></option>
+			<option value = "nature"> Nature </option>
+			<option value = "love"> Love </option>
+			<option value = "school"> School </option>
+			<option value = "Bichon Frises"> Bichon Frises </option>
+			<option value = "feelings"> Feelings </option>
+			</select>
+			-->
+				
+			<b> Form: </b>
+			
+			<select name = "type" id = "type">
+				<option value = ""></option>
+				<option value = "haiku"> Haiku </option>
+				<option value = "sonnet"> Sonnet </option>
+				<option value = "free verse"> Free Verse </option>
+			</select>
+				
+			<b> # of Lines </b>
+				
+			<select name="lines" id="lines">
+				<option value = ""></option>
+				<option value = "2">2</option>
+				<option value = "3">3</option>
+				<option value = "4">4</option>
+				<option value = "5">5</option>
+				<option value = "6">6</option>
+				<option value = "7">7</option>
+				<option value = "8">8</option>
+				<option value = "9">9</option>
+				<option value = "10">10</option>
+				<option value = "11">11</option>
+				<option value = "12">12</option>
+			</select>
+			
+			<input type="submit" name="button" value = "Generate">	
+			
+			<b>Words to rhyme on: </b>
+				
+			<input type="words" class="textbox" name="rhyme1">
+			<input type="words" class="textbox" name="rhyme2">
+			
+		</form>
+			
+		<div id="Poem">
+			<b> Your Poem </b>
+			<p>
+				{% for line in poem %}
+				{{line}} <br/>
+				{% endfor %}
+			</p>
 		</div>
-		<div id="button_container" style="margin-left: 1300px;">
-			<button type="button" id="button2" onclick="window.location.href='/'">Home</button>
-		</div>
-<br>
-<br>  
-<h2>Options</h2>
-<form action = "" method = "POST">
 
-<!--  <b> Theme: </b>
-<select name = "theme" id = "theme">
-<option value = ""></option>
-<option value = "nature"> Nature </option>
-<option value = "love"> Love </option>
-<option value = "school"> School </option>
-<option value = "Bichon Frises"> Bichon Frises </option>
-<option value = "feelings"> Feelings </option>
-</select>
--->
-
-<b> Form: </b>
-<select name = "type" id = "type">
-<option value = ""></option>
-<option value = "haiku"> Haiku </option>
-<option value = "sonnet"> Sonnet </option>
-<option value = "free verse"> Free Verse </option>
-</select>
-<b> # of Lines </b>
-<select name="lines" id="lines">
-<option value = ""></option>
-<option value = "2">2</option>
-<option value = "3">3</option>
-<option value = "4">4</option>
-<option value = "5">5</option>
-<option value = "6">6</option>
-<option value = "7">7</option>
-<option value = "8">8</option>
-<option value = "9">9</option>
-<option value = "10">10</option>
-<option value = "11">11</option>
-<option value = "12">12</option>
-</select>
-<input type="submit" name="button" value = "Generate">	
-<br>
-<b>Words to rhyme on: </b>
-<input type="words" class="textbox" name="rhyme1">
-<input type="words" class="textbox" name="rhyme2">
-</form>
-
-<div id="Poem">
-<br>
-<b> Your Poem </b>
-<br>
-{% for line in poem %}
-{{line}}
-<br>
-{% endfor %}
-</div>
-<br>
-{% if made %}
-<form action="" method="POST">
-<input type="submit" name="button" value = "Add Poem">
-</form>
-{% endif %}
-
+		{% if made %}
+		<form action="" method="POST">
+			<input type="submit" name="button" value = "Add Poem">
+		</form>
+		{% endif %}
+	
+	</div>
 
 </body>
 </html>
