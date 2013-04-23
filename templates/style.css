@@ -22,7 +22,13 @@ p {
 h2 {
     font-family: 'Raleway', Helvetica, Arial, sans-serif;
     font-size: 30px;
+    margin-top: 0;
 } 
+
+h3
+{
+	margin-top: 0;
+}
 
 div#button_container button
 {
@@ -105,9 +111,10 @@ input#Login
     float: right;
 }
 
-#main-content form
+#options
 {
 	text-align: left;
+	margin-bottom: 30px;
 }
 
 #poem form
