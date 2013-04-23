@@ -11,31 +11,31 @@
     <style type="text/css"> {% include "style.css" %} </style>
 </head>
 
-<body id = "profileinfo">
-{% if user %}
-<form action="" method="POST">
-<h1><center>Welcome back {{user}}</center></h1>
-{% endif %}
-<br>
+<body>
 
-</section>
-<nav>
-<div id="button_container">
-	<button type="button" id="button2" onclick="window.location.href='/'">Home</button>
-</div>
-<div id="button_container">
-	<button type="button" id="button2" onclick="window.location.href='generate'">Create Poem!</button>
-</div>
-</nav>
-<br>
-<h2>Your Poems!</h2>
-{% for poem in poems %}
-<p>
-{% for line in poem %}
-{{line}}
-<br>
-{% endfor %}
-{% endfor %}
-</form>
+	<h1>Profile - {{user}}</h1>
+	
+	<div id="sidebar">
+
+	  <div id="button_container">
+	  	<button type="button" id="createpoem" onclick="window.location.href='/'">Home</button>
+		<button type="button" id="profile" onclick="window.location.href='generate'">Generate</button>
+		<button type="button" id="logout" onclick="window.location.href='logout'">Logout</button>
+	  </div>	
+	</div>
+	
+	<div id="main-content">  
+		<h2>Your Poems:</h2>
+
+		{% for poem in poems %}
+		<p>
+			{% for line in poem %}
+			{{line}}<br/>
+			{% endfor %}
+		</p>
+		{% endfor %}
+		
+	</div>
+	
 </body>
 </html>
