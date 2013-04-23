@@ -121,7 +121,13 @@ input#Login
 	text-align: left;
 }
 
-#poem form input
+#poem form
 {
+	width: auto;
 	margin: 0 auto;
+}
+
+#poem
+{
+	padding-bottom: 30px;
 }
