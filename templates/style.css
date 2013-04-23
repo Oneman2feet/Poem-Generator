@@ -76,7 +76,7 @@ div#button_container button:active
 
 #sidebar
 {
-	width: 300px;
+	width: 220px;
 	float: left;
 	margin-left: 20px;
 	padding-top: 30px;
@@ -115,6 +115,11 @@ input#Login
 {
 	text-align: left;
 	margin-bottom: 30px;
+}
+
+#options input.textbox
+{
+	width: 150px;
 }
 
 #poem form
