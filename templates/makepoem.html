@@ -26,7 +26,6 @@
 	</div>
 	
 	<div id="main-content">
-	
 		<h2>Options:</h2>
 		
 		<form action = "" method = "POST">
@@ -41,39 +40,34 @@
 			<option value = "feelings"> Feelings </option>
 			</select>
 			-->
-				
-			<b> Form: </b>
-			
-			<select name = "type" id = "type">
-				<option value = ""></option>
-				<option value = "haiku"> Haiku </option>
-				<option value = "sonnet"> Sonnet </option>
-				<option value = "free verse"> Free Verse </option>
+
+			<label for="type"><b>Poem Form:</b></label>
+			<select name="type" id="type">
+				<option value="haiku">Haiku</option>
+				<option value="sonnet">Sonnet</option>
+				<option value="free verse">Free Verse</option>
 			</select>
 				
-			<b> # of Lines </b>
-				
+			<label for="lines"><b>Number of Lines</b></label>
 			<select name="lines" id="lines">
-				<option value = ""></option>
-				<option value = "2">2</option>
-				<option value = "3">3</option>
-				<option value = "4">4</option>
-				<option value = "5">5</option>
-				<option value = "6">6</option>
-				<option value = "7">7</option>
-				<option value = "8">8</option>
-				<option value = "9">9</option>
-				<option value = "10">10</option>
-				<option value = "11">11</option>
-				<option value = "12">12</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+				<option value="10">10</option>
+				<option value="11">11</option>
+				<option value="12">12</option>
 			</select>
 			
-			<input type="submit" name="button" value = "Generate">	
-			
-			<b>Words to rhyme on: </b>
-				
+			<label for="rhyme1 rhyme2"><b>Words to Rhyme on:</b></label>
 			<input type="words" class="textbox" name="rhyme1">
 			<input type="words" class="textbox" name="rhyme2">
+			
+			<input type="submit" name="button" value="Generate">
 			
 		</form>
 			
