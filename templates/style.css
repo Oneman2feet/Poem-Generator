@@ -116,12 +116,12 @@ input#Login
     float: right;
 }
 
-option
-{
-	text-align: center;
-}
-
 #main-content form
 {
 	text-align: left;
+}
+
+#poem form input
+{
+	margin: 0 auto;
 }
