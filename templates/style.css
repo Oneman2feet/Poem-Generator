@@ -76,9 +76,8 @@ div#button_container button:active
 	margin-left: 20px;
 }
 
-#button_container
+#button_container form.login
 {
-	width: 200px;
 	padding: 20px;
 }
 
@@ -87,11 +86,6 @@ div#button_container button:active
 	width: 500px;
 	float: left;
 	text-align: center;
-}
-
-form.login
-{
-	width: 250px;
 }
 
 form.login div
