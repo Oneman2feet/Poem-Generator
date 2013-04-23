@@ -74,11 +74,7 @@ div#button_container button:active
 	width: 300px;
 	float: left;
 	margin-left: 20px;
-}
-
-#button_container form.login
-{
-	padding: 20px;
+	padding-top: 30px;
 }
 
 #main-content
