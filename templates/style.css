@@ -116,7 +116,7 @@ input#Login
     float: right;
 }
 
-select
+option
 {
 	text-align: center;
 }
