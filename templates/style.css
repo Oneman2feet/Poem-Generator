@@ -115,3 +115,13 @@ input#Login
 {
     float: right;
 }
+
+select
+{
+	text-align: center;
+}
+
+#main-content form
+{
+	text-align: left;
+}

@@ -28,7 +28,7 @@
 	<div id="main-content">
 		<h2>Options:</h2>
 		
-		<form action = "" method = "POST">
+		<form action="" method="POST">
 			
 			<!--  <b> Theme: </b>
 			<select name = "theme" id = "theme">
@@ -75,7 +75,7 @@
 		</form>
 			
 		<div id="Poem">
-			<b> Your Poem </b>
+			<h2> Your Poem </h2>
 			<p>
 				{% for line in poem %}
 				{{line}} <br/>
@@ -85,7 +85,7 @@
 
 		{% if made %}
 		<form action="" method="POST">
-			<input type="submit" name="button" value = "Add Poem">
+			<input type="submit" name="button" value="Add Poem">
 		</form>
 		{% endif %}
 	
