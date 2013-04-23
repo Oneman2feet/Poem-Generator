@@ -22,7 +22,6 @@ p {
 h2 {
     font-family: 'Raleway', Helvetica, Arial, sans-serif;
     font-size: 30px;
-    line-height: 70px;
 } 
 
 div#button_container button
@@ -79,6 +78,7 @@ div#button_container button:active
 
 #main-content
 {
+	padding-top: 30px;
 	width: 500px;
 	float: left;
 	text-align: center;
