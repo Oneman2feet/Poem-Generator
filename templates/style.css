@@ -1,11 +1,10 @@
 body
 {
-	background-color:#FFFFFF;
-	#background-color:#CC9999;
-	background-image: url('http://www.polyvore.com/cgi/img-thing?.out=jpg&size=l&tid=28068984');
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-position: 1060px 565px;
+	background-color:#C0F2FF;
+	//background-image: url('http://www.polyvore.com/cgi/img-thing?.out=jpg&size=l&tid=28068984');
+	//background-repeat: no-repeat;
+	//background-attachment: fixed;
+	//background-position: 1060px 565px;
 }
 
 h1 {
@@ -78,10 +77,21 @@ div#button_container button:active
 
 #sidebar
 {
-	width: 240px;
+	width: 250px;
 	float: left;
 	margin-left: 80px;
 	padding-top: 30px;
+}
+
+#sidebar img
+{
+    padding: 30px 0;
+}
+
+#sidebar #button_container
+{
+   width: 150px;
+   margin: 0 50px;
 }
 
 #main-content
@@ -106,7 +116,7 @@ form.login input.textbox
 
 #login_section
 {
-    margin-top: 400px;
+    margin-top: 0
 }
 
 input#Login

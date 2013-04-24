@@ -50,10 +50,8 @@ def home():
             if not mongo.exists(username, password):
                 session['user'] = username
                 mongo.addUser(username, password)
-                poems = []
-                return render_template("profile.html"
-                                       ,user=username
-                                       ,poems=poems)
+                poem = []
+                return render_template("makepoem.html",poem=poem,made=False)
             else:
                 error = "Username already exists"
                 return render_template("home.html"

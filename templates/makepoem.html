@@ -17,11 +17,15 @@
 	<h1>Create your own Poem!</h1>
 
 	<div id="sidebar">
+
 	  <div id="button_container">
 	  	<button type="button" id="home" onclick="window.location.href='/'">Home</button>
 		<button type="button" id="profile" onclick="window.location.href='profile'">Profile</button>
 		<button type="button" id="logout" onclick="window.location.href='logout'">Logout</button>
 	  </div>
+
+	  <img src="http://24.media.tumblr.com/tumblr_m57o3aJIN81qdqeteo1_500.jpg" alt="falling_letters" width="250" height="350">
+
 	</div>
 	
 	<div id="main-content">
@@ -75,7 +79,10 @@
 		</form>
 			
 		<div id="poem">
-			<h2>Your Poem</h2>
+		  {% if poem %}
+		  <h2>Your Poem</h2>
+		  {% endif %}
+
 			<p>
 				{% for line in poem %}
 				{{line}} <br/>
