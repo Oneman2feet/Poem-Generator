@@ -1,6 +1,11 @@
 body
 {
-	background-color:#CC9999;
+	background-color:#FFFFFF;
+	#background-color:#CC9999;
+	background-image: url('http://www.polyvore.com/cgi/img-thing?.out=jpg&size=l&tid=28068984');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: 1060px 565px;
 }
 
 h1 {
@@ -75,7 +80,7 @@ div#button_container button:active
 {
 	width: 240px;
 	float: left;
-	margin-left: 20px;
+	margin-left: 80px;
 	padding-top: 30px;
 }
 
@@ -84,6 +89,7 @@ div#button_container button:active
 	padding-top: 30px;
 	width: 500px;
 	float: left;
+	margin-left: 100px;
 	text-align: center;
 }
 
@@ -96,6 +102,11 @@ form.login input.textbox
 {
 	float: right;
 	width: 150px;
+}
+
+#login_section
+{
+    margin-top: 400px;
 }
 
 input#Login
