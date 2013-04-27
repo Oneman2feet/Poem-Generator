@@ -46,11 +46,11 @@ def makepoem(n,corpus):
     return poem
 
 def makeShelve(name,filename):
-    database = shelve.open("database")
-    if name in database.keys():
-        del database[name]
-    database[name] = makecorpus(filename)
-    print database
+    poems = shelve.open("poems")
+    if name in poems.keys():
+        del poems[name]
+    poems[name] = makecorpus(filename)
+    print poems
 
 if __name__ == '__main__':
     #shakespeare = makecorpus("sonnets.txt")
@@ -58,12 +58,14 @@ if __name__ == '__main__':
 
     #makeShelve("shakespeare","sonnets.txt")
     #makeShelve("whitman","whitman.txt")
+    #makeShelve("poe","poe.txt")
+    #makeShelve("dickinson","dickinson.txt")
     
-    database = shelve.open("database")
+    poems = shelve.open("poems")
 
-    shakespeare = database['shakespeare']
-    dickinson = database['dickinson']
-    poe = database['poe']
-    whitman = database['whitman']
+    shakespeare = poems['shakespeare']
+    dickinson = poems['dickinson']
+    poe = poems['poe']
+    whitman = poems['whitman']
 
-    print makepoem(8,whitman)
+    print makepoem(8,shakespeare)
