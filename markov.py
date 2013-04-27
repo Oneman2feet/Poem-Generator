@@ -54,12 +54,13 @@ if __name__ == '__main__':
     #shakespeare = makecorpus("sonnets.txt")
     #print shakespeare
 
-    #makeShelve("poe","poe.txt")
+    #makeShelve("whitman","whitman.txt")
     
     database = shelve.open("database")
 
     shakespeare = database['shakespeare']
     dickinson = database['dickinson']
     poe = database['poe']
+    whitman = database['whitman']
 
-    print makepoem(8,poe)
+    print makepoem(8,whitman)
