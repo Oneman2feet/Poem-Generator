@@ -22,7 +22,6 @@ def makecorpus():
 
 def makeline(startword,corpus):
     word = startword.lower()
-    nextw = ""
     startword = startword[0:1].upper()+startword[1:].lower()
     return startword + " " + recursivemakeline(word,corpus)
 
