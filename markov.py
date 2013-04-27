@@ -54,6 +54,7 @@ if __name__ == '__main__':
     #shakespeare = makecorpus("sonnets.txt")
     #print shakespeare
 
+    #makeShelve("shakespeare","sonnets.txt")
     #makeShelve("whitman","whitman.txt")
     
     database = shelve.open("database")

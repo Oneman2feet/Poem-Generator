@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, session
-import mongo, init
+import mongo, init, markov
 
 app = Flask(__name__)
 app.secret_key = "blah"
