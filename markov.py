@@ -1,4 +1,4 @@
-import random
+import random, shelve
 #parsed corpus in the form of a dictionary
 #with keys being the seed words
 #and data being the words that have come after that word
@@ -45,7 +45,17 @@ def makepoem(n,corpus):
         poem += makeline(getSeed(corpus),corpus) + '\n'
     return poem
 
+def makeShelve(name,filename):
+    database = shelve.open("database")
+    database[name] = makecorpus(filename)
+    print database
+
 if __name__ == '__main__':
-    shakespeare = makecorpus("sonnets.txt")
+    #shakespeare = makecorpus("sonnets.txt")
     #print shakespeare
+
+    #makeShelve("shakespeare","sonnets.txt")
+
+    database = shelve.open("database")
+    shakespeare = database['shakespeare']
     print makepoem(8,shakespeare)
