@@ -47,6 +47,8 @@ def makepoem(n,corpus):
 
 def makeShelve(name,filename):
     database = shelve.open("database")
+    if name in database.keys():
+        del database[name]
     database[name] = makecorpus(filename)
     print database
 
