@@ -20,32 +20,32 @@ def makecorpus():
                 shakespeare[line[i]] = [line[i+1]]
 
 
-def makeline(startword):
+def makeline(startword,corpus):
     word = startword.lower()
     nextw = ""
     startword = startword[0:1].upper()+startword[1:].lower()
-    return startword + " " + recursivemakeline(word)
+    return startword + " " + recursivemakeline(word,corpus)
 
-def recursivemakeline(word):
-    nextw = nextword(word)
-    return "" if nextw=='\n' else nextw + " " + recursivemakeline(nextw)
+def recursivemakeline(word,corpus):
+    nextw = nextword(word,corpus)
+    return "" if nextw=='\n' else nextw + " " + recursivemakeline(nextw,corpus)
 
-def nextword(word):
+def nextword(word,corpus):
     #return a random next word based on the corpus
-    if word not in shakespeare.keys():
+    if word not in corpus.keys():
         return '\n'
-    return random.choice(shakespeare[word])
+    return random.choice(corpus[word])
 
-def getSeed():
-    return random.choice(shakespeare.keys())
+def getSeed(corpus):
+    return random.choice(corpus.keys())
 
-def makepoem(n):
+def makepoem(n,corpus):
     poem = ""
     for i in xrange(0,n):
-        poem += makeline(getSeed()) + '\n'
+        poem += makeline(getSeed(corpus),corpus) + '\n'
     return poem
 
 if __name__ == '__main__':
     makecorpus()
     #print shakespeare
-    print makepoem(8)
+    print makepoem(8,shakespeare)
