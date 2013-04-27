@@ -7,10 +7,10 @@ import random, shelve
 def makecorpus(filename):
     name  = {}
     poems = open(filename).readlines()
-    poems = [ [word.lower().replace('(','').replace(')','')
+    poems = [ [word.lower().replace('(','').replace(')','').replace('\r','').replace("--","")
                  for word in line.replace('\n',' \n').split(' ')
                  if word!='' and word!='\n']
-                 for line in poems if line!='\n' ]
+                 for line in poems if line.strip()!="" ]
 
     for line in poems:
         for i in xrange(0,len(line)-1):
@@ -54,8 +54,12 @@ if __name__ == '__main__':
     #shakespeare = makecorpus("sonnets.txt")
     #print shakespeare
 
-    #makeShelve("shakespeare","sonnets.txt")
-
+    #makeShelve("poe","poe.txt")
+    
     database = shelve.open("database")
+
     shakespeare = database['shakespeare']
-    print makepoem(8,shakespeare)
+    dickinson = database['dickinson']
+    poe = database['poe']
+
+    print makepoem(8,poe)
