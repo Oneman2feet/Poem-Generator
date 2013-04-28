@@ -7,7 +7,7 @@ import random, shelve
 def makecorpus(filename):
     name  = {}
     poems = open(filename).readlines()
-    poems = [ [word.lower().replace('(','').replace(')','').replace('\r','').replace("--","")
+    poems = [ [word.lower().replace('(','').replace(')','').replace('\r','').replace("--","").replace('"',"").replace('_',"")
                  for word in line.replace('\n',' \n').split(' ')
                  if word!='' and word!='\n']
                  for line in poems if line.strip()!="" ]
@@ -24,11 +24,11 @@ def makecorpus(filename):
 def makeline(startword,corpus):
     word = startword.lower()
     startword = startword[0:1].upper()+startword[1:].lower()
-    return startword + " " + recursivemakeline(word,corpus)
+    return startword + " " + recursivemakeline(word,corpus,10)
 
-def recursivemakeline(word,corpus):
+def recursivemakeline(word,corpus,depth):
     nextw = nextword(word,corpus)
-    return "" if nextw=='\n' else nextw + " " + recursivemakeline(nextw,corpus)
+    return "" if (nextw=='\n' or depth == 0) else nextw + " " + recursivemakeline(nextw,corpus,depth-1)
 
 def nextword(word,corpus):
     #return a random next word based on the corpus
@@ -40,9 +40,11 @@ def getSeed(corpus):
     return random.choice(corpus.keys())
 
 def makepoem(n,corpus):
+    poems = shelve.open("poems")
+    c = poems[corpus]
     poem = ""
     for i in xrange(0,n):
-        poem += makeline(getSeed(corpus),corpus) + '\n'
+        poem += makeline(getSeed(c),c) + '\n'
     return poem
 
 def makeShelve(name,filename):
@@ -51,6 +53,8 @@ def makeShelve(name,filename):
         del poems[name]
     poems[name] = makecorpus(filename)
     print poems
+
+
 
 if __name__ == '__main__':
     #shakespeare = makecorpus("sonnets.txt")
@@ -63,9 +67,4 @@ if __name__ == '__main__':
     
     poems = shelve.open("poems")
 
-    shakespeare = poems['shakespeare']
-    dickinson = poems['dickinson']
-    poe = poems['poe']
-    whitman = poems['whitman']
-
-    print makepoem(8,shakespeare)
+    print makepoem(8,'poe')
