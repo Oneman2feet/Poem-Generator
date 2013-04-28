@@ -42,9 +42,9 @@ def getSeed(corpus):
 def makepoem(n,corpus):
     poems = shelve.open("poems")
     c = poems[corpus]
-    poem = ""
+    poem = []
     for i in xrange(0,n):
-        poem += makeline(getSeed(c),c) + '\n'
+        poem.append(makeline(getSeed(c),c))
     return poem
 
 def makeShelve(name,filename):
@@ -67,4 +67,4 @@ if __name__ == '__main__':
     
     poems = shelve.open("poems")
 
-    print makepoem(8,'poe')
+    #print makepoem(8,'poe')

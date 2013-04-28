@@ -117,8 +117,21 @@ def generate():
                     return render_template("makepoem.html",poem=poem,made=False)
                 else:
                     poem = init.makeFreeVerse(rhyme1,rhyme2,int(lines))
-            
+            if typer == "shakespeare":
+                lines = int(request.form['lines'])
+                poem = markov.makepoem(lines,'shakespeare')
+            if typer == "dickinson":
+                lines = int(request.form['lines'])
+                poem = markov.makepoem(lines,'dickinson')
+            if typer == "poe":
+                lines = int(request.form['lines'])
+                poem = markov.makepoem(lines,'poe')
+            if typer == "whitman":
+                lines = int(request.form['lines'])
+                poem = markov.makepoem(lines,'whitman')
+
             return render_template("makepoem.html",poem=poem,made=made)
+
         #After generating the poem, adds it to the user's poems
         if button == "Add Poem":
             mongo.addPoem(user, poem)
