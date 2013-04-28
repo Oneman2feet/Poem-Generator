@@ -34,18 +34,7 @@
 		<form id="options" action="" method="POST">
 			
 			<h3>Options:</h3>
-			
-			<!--  <b> Theme: </b>
-			<select name = "theme" id = "theme">
-			<option value = ""></option>
-			<option value = "nature"> Nature </option>
-			<option value = "love"> Love </option>
-			<option value = "school"> School </option>
-			<option value = "Bichon Frises"> Bichon Frises </option>
-			<option value = "feelings"> Feelings </option>
-			</select>
-			-->
-
+		
 			<label for="type"><b>Poem Form:</b></label>
 			<select name="type" id="type">
 				<option value="haiku">Haiku</option>
@@ -110,6 +99,7 @@
   
   $(document).ready(function() { 
      $("#rhyme").hide();
+     $("#numLines").hide();
      $("#type").change(function(e) {
 
         if(this.value == "sonnet"){
