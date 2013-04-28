@@ -57,7 +57,8 @@
 				<option value="whitman">In the style of Whitman</option>
 			</select>
 			<br/>
-				
+			
+			<div id="numLines">
 			<label for="lines"><b>Number of Lines</b></label>
 			<select name="lines" id="lines">
 				<option value="2">2</option>
@@ -72,7 +73,8 @@
 				<option value="11">11</option>
 				<option value="12">12</option>
 			</select>
-			<br/>
+			</div>
+			
 			<div id="rhyme">
 			<label for="rhyme1 rhyme2"><b>Words to Rhyme on:</b></label>
 			<input type="words" class="textbox" name="rhyme1">
@@ -109,11 +111,22 @@
   $(document).ready(function() { 
      $("#rhyme").hide();
      $("#type").change(function(e) {
-        if(this.value != "sonnet" && this.value != "free verse"){
-           $("#rhyme").slideUp();
-        }
-        else{
+
+        if(this.value == "sonnet"){
            $("#rhyme").slideDown();
+           $("#numLines").slideUp();
+        }
+        else if (this.value == "haiku"){
+           $("#rhyme").slideUp();
+           $("#numLines").slideUp();
+        }
+        else if (this.value == "free verse"){
+           $("#rhyme").slideDown();
+           $("#numLines").slideDown();
+        }
+        else {
+           $("#rhyme").slideUp();
+           $("#numLines").slideDown();
         }
                                      }
                          );

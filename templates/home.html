@@ -13,8 +13,11 @@
 </head>
 
 <body>
-
+        {% if not loggedin %}
 	<h1>Welcome to the Poem Generator!</h1>
+	{% else %}
+	<h1>Home Page</h1>
+	{% endif %}
 	
 	<div id="sidebar">
 
