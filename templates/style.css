@@ -79,8 +79,9 @@ div#button_container button:active
 {
 	width: 250px;
 	float: left;
-	margin-left: 80px;
-	padding-top: 30px;
+	position: absolute;
+	top: 170px;
+	left: 80px;
 }
 
 #sidebar img
@@ -96,11 +97,15 @@ div#button_container button:active
 
 #main-content
 {
-	padding-top: 30px;
-	width: 500px;
+	margin-top: 30px;
+	padding-left: 330px;
+	width: 100%;
 	float: left;
-	margin-left: 100px;
 	text-align: center;
+
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */
 }
 
 form.login div
