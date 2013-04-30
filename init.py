@@ -244,7 +244,14 @@ def makeLineRhymeSense(x,word):
     line = ""
     orig = x
     w = word
-    words = getRhymes(word)
+
+    rhymeword = choice(getRhymes(word))
+    rword = rhymeword[1] 
+    syls = int(rhymeword[0])
+
+    return makeLineSense(x-syls) + rword
+
+'''
     n = 0
     while x > 0:
         #get num of syllables
@@ -294,7 +301,7 @@ def makeLineRhymeSense(x,word):
         x = x - num
     return line
 
-
+'''
 
 
 #print makeBetterSonnet("see","good")
@@ -328,3 +335,6 @@ def makeFreeVerse(word1,word2,lines):
             line.append(makeLineRhymeSense(8,word2))
     return line
         
+
+if __name__ == '__main__':
+    print makeLineRhymeSense(8,'bird')
