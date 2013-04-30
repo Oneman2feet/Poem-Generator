@@ -108,6 +108,12 @@ div#button_container button:active
 	box-sizing: border-box;         /* Opera/IE 8+ */
 }
 
+#column
+{
+    width: 500px;
+    margin: 0 auto;
+}
+
 form.login div
 {
 	padding: 5px 0;
