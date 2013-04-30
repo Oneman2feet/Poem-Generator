@@ -80,6 +80,7 @@ def generate():
     user = session['user']
     global poem
     made = False
+    added = False
 
     #If something happens
     if request.method == "POST":
@@ -102,19 +103,19 @@ def generate():
                 if rhyme1 == "" or rhyme2 == "":
                     poem = ["Error, blank rhyming box."
                             ,"Please fill in both boxes for rhyming words"]
-                    return render_template("makepoem.html",poem=poem,made=False)
+                    return render_template("makepoem.html",poem=poem,made=False,added=False)
                 poem = init.makeBetterSonnet(rhyme1,rhyme2)
             #Makes a free verse, checks both rhyming boxes, checks # of lines   
             if typer == "free verse":
                 if rhyme1 == "" or rhyme2 == "":
                     poem = ["Error, blank rhyming box."
                             ,"Please fill in both boxes for rhyming words"]
-                    return render_template("makepoem.html",poem=poem,made=False)
+                    return render_template("makepoem.html",poem=poem,made=False,added=False)
                 lines = request.form['lines']
                 if lines == "":
                     poem = ["Error, blank number of lines"
                             ,"Please enter a number of lines"]
-                    return render_template("makepoem.html",poem=poem,made=False)
+                    return render_template("makepoem.html",poem=poem,made=False,added=False)
                 else:
                     poem = init.makeFreeVerse(rhyme1,rhyme2,int(lines))
             if typer == "shakespeare":
@@ -130,15 +131,14 @@ def generate():
                 lines = int(request.form['lines'])
                 poem = markov.makepoem(lines,'whitman')
 
-            return render_template("makepoem.html",poem=poem,made=made)
+            return render_template("makepoem.html",poem=poem,made=made,added=False)
 
         #After generating the poem, adds it to the user's poems
         if button == "Add Poem":
             mongo.addPoem(user, poem)
-            poem = ["Would you like to make a new poem?"]
-            return render_template("makepoem.html",poem=poem,made=False)
+            return render_template("makepoem.html",poem=poem,made=False,added=True)
 
-    return render_template("makepoem.html",poem="",made=made)
+    return render_template("makepoem.html",poem="",made=made,added=added)
 
 
 @app.route("/logout",methods=["GET","POST"])
