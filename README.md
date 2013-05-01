@@ -1,4 +1,7 @@
-<a href="ml7.stuycs.org:7999">Poem-Generator</a>
+Poem Generator
+==============
+
+ml7.stuycs.org:7999
 
 	* Batya Zamansky
 	* Zachary Zimmerman
