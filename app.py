@@ -32,14 +32,21 @@ def home():
 
         #If the button pressed is Login
         if button=='Login':
-            if mongo.checkUser(username, password):
-                session['user'] = username
-                poems = mongo.getPoems(username)
-                return render_template("profile.html"
+            if mongo.exists(username,password):
+                if mongo.checkUser(username, password):
+                    session['user'] = username
+                    poems = mongo.getPoems(username)
+                    return render_template("profile.html"
                                        ,user=username
                                        ,poems=poems)
+                else:
+                    error = "Incorrect password"
+                    return render_template("home.html"
+                                       ,poems=poems
+                                       ,loggedin=False
+                                       ,error=error)
             else:
-                error = "Incorrect username or password"
+                error = "Username does not exist"
                 return render_template("home.html"
                                        ,poems=poems
                                        ,loggedin=False
