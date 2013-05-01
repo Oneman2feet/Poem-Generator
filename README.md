@@ -13,6 +13,16 @@ Poem-Generator
 
 <b>Currently located on port <i>7999</i> </b>
 
+<b>Necessary stuff to download:</b>
+<ul>
+<li>flask</li>
+<li>nltk</li>
+	<li>download nltk cmudict in nltk</li>
+<li>urllib2</li>
+<li>regex</li>
+
+
+
 <b>Our project: </b>
 
 The Poem-Generator will have a better name by Friday.
