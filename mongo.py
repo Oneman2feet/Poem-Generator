@@ -1,4 +1,5 @@
 from pymongo import Connection
+from bson.objectid import ObjectId
 
 
 def conn():
@@ -67,6 +68,15 @@ def getPoems(user):
     else:
         return [""]
 
+def getPoemByID(poemid):
+    db = conn()
+    d = [x for x in db.poems.find({"_id":ObjectId(poemid)})]
+    if len(d)>0:
+        d = d[0]
+    else:
+        return ["No Such Poem"]
+    return d['poem']
+
 def getAllPoems():
     db = conn()
     pomes = []
@@ -83,5 +93,6 @@ def getAllPoems():
     return pomes
 
 if __name__ == '__main__':
-    clearDB()
+    #clearDB()
+    print getPoemByID("51829aeead39da2cdb000000")
     

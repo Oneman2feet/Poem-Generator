@@ -155,6 +155,17 @@ def logout():
     print "LOGGED OUT"
     return redirect("/")
 
+@app.route("/poem/<poemid>")
+def poem(poemid=None):
+    if poemid == None:
+        return redirect("/")
+    else:
+        print "HI"
+        poem = mongo.getPoemByID(poemid)
+        print "HI"
+        return render_template("poem.html",poem=poem)
+        
+
 if __name__ == '__main__':
     app.run(debug = True, host="0.0.0.0", port = 7999)
 
