@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+
+<html xmins = "http://www.w3.org/1999/xhtml">
+<link href="http://fonts.googleapis.com/css?family=Goudy+Bookletter+1911" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Raleway:100" rel="stylesheet" type="text/css">
+
+<head>
+	<meta http-equiv= "Content-Type" content= "text/html; charset=UFT-8" />
+	<title>Poem</title>
+    <style type="text/css"> {% include "style.css" %} </style>
+</head>
+
+<body>
+
+	<h1>Poem</h1>
+	
+	<div id="sidebar">
+
+	  <div id="button_container">
+	  	<button type="button" id="createpoem" onclick="window.location.href='/'">Home</button>
+		<button type="button" id="profile" onclick="window.location.href='generate'">Generate</button>
+		<button type="button" id="logout" onclick="window.location.href='logout'">Logout</button>
+	  </div>	
+
+	  <img src="{{ url_for('static', filename='book.png') }}" alt="falling letters" width="250" height="350">
+
+	</div>
+	
+	<div id="main-content">  
+	  <div id="column">
+	       <h2>Poem:</h2>
+
+		<p>
+		  {% for line in poem %}
+		  {{line}}<br/>
+		  {% endfor %}
+		</p>
+
+	  </div>
+	</div>
+	
+</body>
+</html>
