@@ -76,8 +76,11 @@
 		{% for poem in poems %}
 		<p>
 			{% for line in poem %}
+			{% if line != poem | last %}
 			{{line}}<br/>
+			{% endif %}
 			{% endfor %}
+		<a href="/poem/{{poem[-1]}}">See Poem</a>	
 		</p>
 		{% endfor %}
 
