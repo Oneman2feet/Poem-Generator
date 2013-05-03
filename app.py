@@ -160,10 +160,9 @@ def poem(poemid=None):
     if poemid == None:
         return redirect("/")
     else:
-        print "HI"
         poem = mongo.getPoemByID(poemid)
-        print "HI"
-        return render_template("poem.html",poem=poem)
+        url = "http://ml7.stuycs.org:7999/poem/%s"%(poemid)
+        return render_template("poem.html",poem=poem,url=url)
         
 
 if __name__ == '__main__':
