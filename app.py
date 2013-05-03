@@ -36,6 +36,7 @@ def home():
                 if mongo.checkUser(username, password):
                     session['user'] = username
                     poems = mongo.getPoems(username)
+                    poems.reverse()
                     return render_template("profile.html"
                                        ,user=username
                                        ,poems=poems)
