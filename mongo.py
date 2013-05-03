@@ -89,10 +89,13 @@ def getAllPoems():
             b = x['poem']
         a = "~~  " + x['user']
         b.append(a)
+        c = x['_id']
+        b.append(c)
         pomes.append(b)
     return pomes
 
 if __name__ == '__main__':
     #clearDB()
-    print getPoemByID("51829aeead39da2cdb000000")
+    print getAllPoems()
+    #print getPoemByID("51829aeead39da2cdb000000")
     
