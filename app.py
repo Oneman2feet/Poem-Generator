@@ -84,6 +84,8 @@ def profile():
 
 @app.route("/generate", methods = ["GET","POST"])
 def generate():
+    if 'user' not in session:
+        return redirect("/")
     user = session['user']
     global poem
     made = False
@@ -155,13 +157,13 @@ def logout():
     print "LOGGED OUT"
     return redirect("/")
 
-@app.route("/poem/<poemid>")
+@app.route("/<poemid>")
 def poem(poemid=None):
     if poemid == None:
         return redirect("/")
     else:
         poem = mongo.getPoemByID(poemid)
-        url = "http://ml7.stuycs.org:7999/poem/%s"%(poemid)
+        url = "http://ml7.stuycs.org:7999/%s"%(poemid)
         return render_template("poem.html",poem=poem,url=url)
         
 
