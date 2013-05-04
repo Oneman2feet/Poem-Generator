@@ -5,8 +5,8 @@ app = Flask(__name__)
 app.secret_key = "blah"
 
 global user
-#global poem
-#poem = "" 
+global poem
+poem = "" 
 
 @app.route("/", methods = ["GET", "POST"])
 def home():
@@ -89,6 +89,7 @@ def generate():
         return redirect("/")
     user = session['user']
     global poem
+    print poem
     made = False
     added = False
 
@@ -159,7 +160,7 @@ def logout():
     return redirect("/")
 
 @app.route("/<poemid>")
-def poem(poemid=None):
+def poempage(poemid=None):
     if poemid == None:
         return redirect("/")
     else:
