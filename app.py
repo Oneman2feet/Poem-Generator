@@ -2,16 +2,16 @@ from flask import Flask, render_template, request, redirect, session
 import mongo, init, markov
 
 app = Flask(__name__)
-app.secret_key = "blah"
+app.secret_key = "blahbbb"
 
-global user
-global poem
-poem = "" 
+#global user
+#global poem
+#poem = "" 
 
 @app.route("/", methods = ["GET", "POST"])
 def home():
     print "HOME PAGE ###"
-    global poem
+    #global poem
     poem = []
     poems = mongo.getAllPoems()
     poems.reverse()
@@ -96,15 +96,18 @@ def generate():
     if 'user' not in session:
         return redirect("/")
     
-    global user
+    #global user
     user = session['user']
     print "USER"
     print user
     
-    global poem
-    print "POEM"
-    print poem
-    
+    #global poem
+    #print "POEM"
+    #print poem
+    if 'poem' in session.keys():
+        poem=session['poem']
+    else:
+        poem=""
     made = False
     added = False
 
@@ -163,6 +166,7 @@ def generate():
             #poem = poem
             print "MADE POEM"
             print poem
+            session['poem']=poem
             return render_template("makepoem.html",poem=poem,made=made,added=False)
 
         #After generating the poem, adds it to the user's poems
@@ -171,7 +175,11 @@ def generate():
             print poem
             mongo.addPoem(user, poem)
             return render_template("makepoem.html",poem=poem,made=False,added=True)
-
+    try:    
+        print poem
+    except:
+        poem=""
+        print poem
     return render_template("makepoem.html",poem="",made=made,added=added)
 
 
