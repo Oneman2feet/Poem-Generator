@@ -59,6 +59,7 @@ def home():
                 session['user'] = username
                 mongo.addUser(username, password)
                 poem = []
+                print "HI THERE"
                 return redirect("/generate")
             else:
                 error = "Username already exists"
@@ -93,6 +94,7 @@ def generate():
     made = False
     added = False
 
+    print "SOMETHING PLEASE"
     #If something happens
     if request.method == "POST":
         button = request.form['button']
