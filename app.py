@@ -59,7 +59,7 @@ def home():
                 session['user'] = username
                 mongo.addUser(username, password)
                 poem = []
-                return render_template("makepoem.html",poem=poem,made=False)
+                return redirect("/generate")
             else:
                 error = "Username already exists"
                 return render_template("home.html"
@@ -95,7 +95,7 @@ def generate():
     #If something happens
     if request.method == "POST":
         button = request.form['button']
-
+        
         #If the button pressed is Generate
         if button == "Generate":
             typer = request.form['type']
