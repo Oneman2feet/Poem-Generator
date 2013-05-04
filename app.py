@@ -5,8 +5,8 @@ app = Flask(__name__)
 app.secret_key = "blah"
 
 global user
-global poem
-poem = "" 
+#global poem
+#poem = "" 
 
 @app.route("/", methods = ["GET", "POST"])
 def home():
