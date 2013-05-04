@@ -126,7 +126,7 @@ def generate():
                  made = True
             #Makes a Haiku
             if typer == "haiku":
-                pome = init.makeHaiku()
+                poem = init.makeHaiku()
             #Makes a sonnet, checks both rhyming boxes
             if typer == "sonnet":
                 if rhyme1 == "" or rhyme2 == "":
@@ -160,7 +160,7 @@ def generate():
                 lines = int(request.form['lines'])
                 poem = markov.makepoem(lines,'whitman')
 
-            poem = pome
+            #poem = poem
             print "MADE POEM"
             print poem
             return render_template("makepoem.html",poem=poem,made=made,added=False)
@@ -193,7 +193,7 @@ def poempage(poemid=None):
         
 
 if __name__ == '__main__':
-    app.run(debug = False, host="0.0.0.0", port = 7999)
+    app.run(debug = True, host="0.0.0.0", port = 7999)
 
 
 
