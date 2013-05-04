@@ -10,6 +10,9 @@ poem = ""
 
 @app.route("/", methods = ["GET", "POST"])
 def home():
+    print "HOME PAGE ###"
+    global poem
+    poem = []
     poems = mongo.getAllPoems()
     poems.reverse()
     poems = poems[:10]
@@ -26,12 +29,14 @@ def home():
 
     #If the user is not in the session
     elif request.method == "POST":
+        print "USER NOT IN SESSION"
         username = request.form.get("username")
         password = request.form.get("password")
         button = request.form['button']
 
         #If the button pressed is Login
         if button=='Login':
+            print "LOGGING IN #############"
             if mongo.exists(username,password):
                 if mongo.checkUser(username, password):
                     session['user'] = username
@@ -55,11 +60,12 @@ def home():
 
         #If the button pressed is Register
         elif button=='Register':
+            print "ADDING USER ########"
             if not mongo.exists(username, password):
                 session['user'] = username
                 mongo.addUser(username, password)
                 poem = []
-                print "HI THERE"
+                print "ADDED USER"
                 return redirect("/generate")
             else:
                 error = "Username already exists"
@@ -86,17 +92,25 @@ def profile():
 
 @app.route("/generate", methods = ["GET","POST"])
 def generate():
+    print "GENERATE PAGE"
     if 'user' not in session:
         return redirect("/")
+    
+    global user
     user = session['user']
+    print "USER"
+    print user
+    
     global poem
+    print "POEM"
     print poem
+    
     made = False
     added = False
 
-    print "SOMETHING PLEASE"
     #If something happens
     if request.method == "POST":
+        print "SOMETHING HAPPENED"
         button = request.form['button']
         
         #If the button pressed is Generate
@@ -105,12 +119,14 @@ def generate():
             rhyme1 = request.form['rhyme1']
             rhyme2 = request.form['rhyme2']
 
+            print "MAKING POEM"
+
             #Makes sure there is a type selected
             if typer != "":
                  made = True
             #Makes a Haiku
             if typer == "haiku":
-                poem = init.makeHaiku()
+                pome = init.makeHaiku()
             #Makes a sonnet, checks both rhyming boxes
             if typer == "sonnet":
                 if rhyme1 == "" or rhyme2 == "":
@@ -144,10 +160,15 @@ def generate():
                 lines = int(request.form['lines'])
                 poem = markov.makepoem(lines,'whitman')
 
+            poem = pome
+            print "MADE POEM"
+            print poem
             return render_template("makepoem.html",poem=poem,made=made,added=False)
 
         #After generating the poem, adds it to the user's poems
         if button == "Add Poem":
+            print "ADDING POEM"
+            print poem
             mongo.addPoem(user, poem)
             return render_template("makepoem.html",poem=poem,made=False,added=True)
 
