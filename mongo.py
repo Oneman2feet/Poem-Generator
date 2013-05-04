@@ -95,7 +95,7 @@ def getAllPoems():
     return pomes
 
 if __name__ == '__main__':
-    #clearDB()
-    print getAllPoems()
+    clearDB()
+    #print getAllPoems()
     #print getPoemByID("51829aeead39da2cdb000000")
     
