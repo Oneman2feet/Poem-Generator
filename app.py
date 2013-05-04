@@ -5,8 +5,8 @@ app = Flask(__name__)
 app.secret_key = "blah"
 
 global user
-#global poem
-#poem = "" 
+global poem
+poem = "" 
 
 @app.route("/", methods = ["GET", "POST"])
 def home():
@@ -59,6 +59,7 @@ def home():
                 session['user'] = username
                 mongo.addUser(username, password)
                 poem = []
+                print "HI THERE"
                 return redirect("/generate")
             else:
                 error = "Username already exists"
@@ -92,6 +93,7 @@ def generate():
     made = False
     added = False
 
+    print "SOMETHING PLEASE"
     #If something happens
     if request.method == "POST":
         button = request.form['button']
@@ -159,7 +161,7 @@ def logout():
     return redirect("/")
 
 @app.route("/<poemid>")
-def poem(poemid=None):
+def poempage(poemid=None):
     if poemid == None:
         return redirect("/")
     else:
