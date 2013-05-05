@@ -75,7 +75,12 @@ def getPoemByID(poemid):
         d = d[0]
     else:
         return ["No Such Poem"]
-    return d['poem']
+    l = []
+    l.extend(d['poem'])
+    a = "~~ " + d['user']
+    l.append(a)
+    return l
+    #return d['poem']
 
 def getAllPoems():
     db = conn()

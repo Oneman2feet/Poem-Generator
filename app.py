@@ -196,9 +196,8 @@ def poempage(poemid=None):
         return redirect("/")
     else:
         poem = mongo.getPoemByID(poemid)
-        url = "http://ml7.stuycs.org:7999/%s"%(poemid)
-        return render_template("poem.html",poem=poem,url=url)
-        
+        url = "http://ml7.stuycs.org:7999/%s"%(str(poemid))
+        return render_template("poempage.html",poem=poem,url=url)
 
 if __name__ == '__main__':
     app.run(debug = True, host="0.0.0.0", port = 7999)
