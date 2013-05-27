@@ -12,7 +12,7 @@
 <b>Front End: </b> Amanda and Tiffany
 <b>Back End: </b> Batya and Zachary
 
-<b>Currently located on port <i>7999</i> </b>
+<b>Currently located <a href="http://ml7.stuycs.org:7999">here</a> </b>
 
 <b>Necessary stuff to download:</b>
 <ul>
