@@ -13,17 +13,17 @@
 
 <body>
 
-	<h1>Profile - {{user}}</h1>
+	<h1> {{user}}</h1>
 	
 	<div id="sidebar">
 
 	  <div id="button_container">
-	  	<button type="button" id="createpoem" onclick="window.location.href='/'">Home</button>
-		<button type="button" id="profile" onclick="window.location.href='generate'">Generate</button>
-		<button type="button" id="logout" onclick="window.location.href='logout'">Logout</button>
+	  	<button type="button" id="createpoem" style="position:absolute; top: 0px; left: 0px; height:80px" onclick="window.location.href='/'">Home</button>
+		<button type="button" id="profile" style="position:absolute; top: 0px; left: 150px; height:80px" onclick="window.location.href='generate'">Generate</button>
+		<button type="button" id="logout" style="position:absolute; top: 0px; right: 0px; height:80px" onclick="window.location.href='logout'">Logout</button>
 	  </div>	
 
-	  <img src="{{ url_for('static', filename='book.png') }}" alt="falling letters" width="250" height="350">
+	  <!--<img src="{{ url_for('static', filename='book.png') }}" alt="falling letters" width="250" height="350">-->
 
 	</div>
 	

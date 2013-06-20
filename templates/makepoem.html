@@ -21,12 +21,12 @@
 	<div id="sidebar">
 
 	  <div id="button_container">
-	  	<button type="button" id="home" onclick="window.location.href='/'">Home</button>
-		<button type="button" id="profile" onclick="window.location.href='profile'">Profile</button>
-		<button type="button" id="logout" onclick="window.location.href='logout'">Logout</button>
+	  	<button type="button" id="home" style="position:absolute; top: 0px; left: 0px; height:80px" onclick="window.location.href='/'">Home</button>
+		<button type="button" id="profile" style="position:absolute; top: 0px; left: 150px; height:80px" onclick="window.location.href='profile'">Profile</button>
+		<button type="button" id="logout" style="position:absolute; top: 0px; right: 0px; height:80px" onclick="window.location.href='logout'">Logout</button>
 	  </div>
 
-	  <img src="{{ url_for('static', filename='book.png') }}" alt="falling letters" width="250" height="350">
+	  <!--<img src="{{ url_for('static', filename='book.png') }}" alt="falling letters" width="250" height="350">-->
 
 	</div>
 	
@@ -35,9 +35,11 @@
 	  <div id="column">
 		
 		<form id="options" action="" method="POST">
-			
+			<div style="font-family:'Raleway'">
+			  <div style="font-size:18px">
 			<h3>Options:</h3>
-		
+			</div>
+			  <div style="font-size:15px">
 			<label for="type"><b>Poem Form:</b></label>
 			<select name="type" id="type">
 				<option value="haiku">Haiku</option>
@@ -48,9 +50,10 @@
 				<option value="poe">In the style of Poe</option>
 				<option value="whitman">In the style of Whitman</option>
 			</select>
-			<br/>
+		
 			
 			<div id="numLines">
+			  <br>
 			<label for="lines"><b>Number of Lines</b></label>
 			<select name="lines" id="lines">
 				<option value="2">2</option>
@@ -65,17 +68,21 @@
 				<option value="11">11</option>
 				<option value="12">12</option>
 			</select>
+			<br>
 			</div>
 			
 			<div id="rhyme">
+			  <br>
 			<label for="rhyme1 rhyme2"><b>Words to Rhyme on:</b></label>
 			<input type="words" class="textbox" name="rhyme1">
 			<input type="words" class="textbox" name="rhyme2">
 			</div>
-			
+			<br><br>
 			
 			<input type="submit" name="button" value="Generate">
-			
+		
+			</div>
+			  </div>
 		</form>
 			
 		<div id="poem">

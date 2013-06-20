@@ -18,32 +18,43 @@
 	{% else %}
 	<h1>Home Page</h1>
 	{% endif %}
+	<!--<img src="{{ url_for('static', filename='book.png') }}" alt="falling_letters" width="250" height="350">-->
+	<div style="width:100%; height: 10%; background-color: #FFFFFF" id="sidebar">
 	
-	<div id="sidebar">
 
 	  {% if not loggedin %}
 	  <div id="login_section">
 		<section class="loginform cf"> 
-			<form action="" class="well login" method="POST"> 
-			  <div>
+			<form action="" class="well login" method="POST">
+			 
+			  <div style="font-family:'Raleway'; font-size: 18px">
 				  <label for="username"><b>Username</b></label>  
+				  <div style="position: absolute; top: 2px; left: 100px">
 				  <input type="username" class="textbox" name="username" required>
+				  </div>
 				</div>
-				<div>
+
+				<div style="font-family:'Raleway'; font-size: 18px">
+				  
 				  <label for="password"><b>Password</b></label>  
+				  <div style="position:absolute; top: 35px; left: 100px;">
 				  <input type="password" class="textbox" name="password" required>
+				  </div>
 				</div> 
+				<div id="button_container">
 				<div id="sub">
-				  <input type="submit" name="button" value="Login"/>
-				  <input type="submit" name="button" value="Register"/>
+				  <input style="position:absolute; top: 0px; right: 80px; height:80px" type="submit" name="button" value="Login"/>
+				  <input style="position:absolute; top: 0px; right: 0px; height:80px" type="submit" name="button" value="Register"/>
 				</div>
+				</div>
+			
 				</form> 
 		</section>
 	  </div>
 	  <div id="error_section">
 	    {{error}}
 	  </div>
-	  <div id="names">
+<!--	  <div id="names">
 	    <br/>
 	    <br/>
 	    Project made by:
@@ -54,22 +65,22 @@
 	    <li>Tiffany Phan</li>
 	    </ul>
 	    Period 7 Software Development
-	  </div>
+	  </div>-->
 	  {% else %}
 	  <div id="button_container">
-	  	<button type="button" id="profile" onclick="window.location.href='profile'">Profile</button>
-	  	<button type="button" id="createpoem" onclick="window.location.href='generate'">Generate</button>
-		<button type="button" id="logout" onclick="window.location.href='logout'">Logout</button>
+	  	<button type="button" id="profile" style="position:absolute; top: 0px; left: 0px; height:80px" onclick="window.location.href='profile'">Profile</button>
+	  	<button type="button" id="createpoem" style="position:absolute; top: 0px; left: 150px; height:80px" onclick="window.location.href='generate'">Generate</button>
+		<button type="button" id="logout" style="position:absolute; top: 0px; right: 0px; height:80px" onclick="window.location.href='logout'">Logout</button>
 	  </div>
 	  {% endif %}
 
-          <img src="{{ url_for('static', filename='book.png') }}" alt="falling letters" width="250" height="350">
+          <!--<img src="{{ url_for('static', filename='book.png') }}" alt="falling letters" width="250" height="350">-->
 		
 	</div>
-	
+	<center>
 	<div id="main-content">  
-
-	  <div id="column">
+	  
+	  <div style="background-color: #ffffff" id="column">
 
 		<h2>New Poems:</h2>
 
@@ -85,9 +96,14 @@
 		{% endfor %}
 
 	  </div>
-
+	<div style="font-family:'Raleway'; font-size: 13px; position:fixed; left:5px; bottom:0px;">
+	    Software Development Period 7
+	  </div>
+	 <div style="font-family:'Raleway'; font-size: 13px; position:fixed; right: 5px; bottom: 0px;">
+	    Batya Zamansky, Zachary Zimmerman, Amanda Boss, Tiffany Phan
+	  </div>
 	</div>
-	
+
 </body>
 </html>
 
