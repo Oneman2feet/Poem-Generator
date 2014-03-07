@@ -1,4 +1,4 @@
-<a href="http://ml7.stuycs.org:7999">Poem Generator</a>
+<a href="http://bzamansky.com:7999/">Poem Generator</a>
 ==============
 
 	* Batya Zamansky
